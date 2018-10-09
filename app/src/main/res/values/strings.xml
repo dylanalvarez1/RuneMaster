@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MidtermProject</string>
+    <string name="app_name">Rune Master</string>
     <string name="title_activity_maps">Map</string>
     <string name="maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBk33kstnJG845KkbYlhzotiCGd_j5IJO4</string>
 </resources>

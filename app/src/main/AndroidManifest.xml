@@ -28,17 +28,22 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".SearchingActivity"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".SearchingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-
-        </activity>
-
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".BattleActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".ItemActivity" />
+        <activity android:name=".SetSpellActivity" />
+        <activity android:name=".SpellBookActivity"></activity>
     </application>
 
 </manifest>

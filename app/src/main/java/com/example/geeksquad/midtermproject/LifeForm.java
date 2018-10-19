@@ -5,10 +5,12 @@ import java.util.Collection;
 
 public class LifeForm {
     public int health, mana, maxHealth, level, damage, def;
-    public String status, type;
+    public String name, status, type;
     public ArrayList<Spell> mySpells = new ArrayList<Spell>(3);
+    public Spell loadedSpell = null;
 
-    public LifeForm(int health, int mana, int level, int damage, int def, String status, String type) {
+    public LifeForm(String name, int health, int mana, int level, int damage, int def, String status, String type) {
+        this.name = name;
         this.health = health;
         this.maxHealth = health;
         this.mana = mana;
@@ -21,10 +23,13 @@ public class LifeForm {
     }
 
     public void basicAttack(LifeForm target) {
+        target.health -= 10;
+        /*
         if(target.def < this.damage) {
             //A basic attack, although its weak
-            target.health -= (int) (this.damage - target.def);
-        }
+            //target.health -= (int) (this.damage - target.def);
+            target.health = 20;
+        } */
 
     }
 

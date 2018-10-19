@@ -1,17 +1,14 @@
 package com.example.geeksquad.midtermproject;
 
-import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class BattleActivity  extends ClosableActivity {
     boolean battleWon;
@@ -19,11 +16,15 @@ public class BattleActivity  extends ClosableActivity {
     boolean selectSpell;
     TextView turnText;
     TextView playerHealth;
-    TextView playerDef;
+    TextView playerLevel;
     TextView playerMana;
+    TextView playerStatus;
     LifeForm enemy;
     TextView enemyHealth;
     TextView enemyName;
+    TextView enemyStatus;
+    TextView enemyLevel;
+    ImageView enemyIcon;
     Button pButton;
     Button cButton;
     Button iButton;
@@ -89,27 +90,31 @@ public class BattleActivity  extends ClosableActivity {
         findElements();
         battleWon = false;
         selectSpell = false;
-        enemy = new LifeForm("Elder Dragon", 60, 30, 2,10, 1, "None", "ice");
-        enemyName.setText(enemy.name);
+        enemy = new LifeForm("Elder Dragon Pup", 60, 30, 1,10, 1, "None", "ice");
+        setStaticFields();
         updateStats();
+    }
+
+    public void setStaticFields() {
+        enemyName.setText(enemy.name);
+        enemyLevel.setText("Level: " + Integer.toString(enemy.level));
+        playerLevel.setText("Level: " + Integer.toString(SearchingActivity.player.level));
     }
 
     public void updateStats() { //update health, mana, status of enemy and player
         enemyHealth.setText("Health: " + Integer.toString(enemy.health));
-        playerHealth.setText("Health" + Integer.toString(SearchingActivity.player.health));
+        enemyStatus.setText("Status: " + enemy.status);
+        playerHealth.setText("Health: " + Integer.toString(SearchingActivity.player.health));
         playerMana.setText("Mana: " + Integer.toString(SearchingActivity.player.mana));
+        playerStatus.setText("Status: " + SearchingActivity.player.status);
+
 
     }
 
     public void onBasicAttack(View view) {
         turnText.setText("");
         SearchingActivity.player.basicAttack(enemy);
-        String update = "Health: " + Integer.toString(enemy.health);
-        battleText.offer("The player walked up and hit the dragon!");
-
         disableInputs();
-
-        //enemyHealth.setText(update);
 
     }
     public void onSpellAttack(View view) {
@@ -129,26 +134,33 @@ public class BattleActivity  extends ClosableActivity {
         turnText.setText("");
         SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(0));
         revertMenu();
+        disableInputs();
     }
 
     public void onSpellCast2(View view) {
         turnText.setText("");
         SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(1));
         revertMenu();
+        disableInputs();
     }
     public void onSpellCast3(View view) {
         turnText.setText("");
         SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(2));
         revertMenu();
+        disableInputs();
     }
 
     void findElements() {
         turnText = findViewById(R.id.turnText);
         playerHealth = findViewById(R.id.playerHealth);
-        playerDef = findViewById(R.id.playerDefense);
+        playerLevel = findViewById(R.id.playerLevel);
         playerMana = findViewById(R.id.playerMana);
+        playerStatus = findViewById(R.id.playerStatus);
         enemyHealth = findViewById(R.id.enemyHealth);
+        enemyLevel = findViewById(R.id.enemyLevel);
+        enemyStatus = findViewById(R.id.enemyStatus);
         enemyName = findViewById(R.id.enemyName);
+        enemyIcon = findViewById(R.id.enemyIcon);
         battleDescription = findViewById(R.id.battleDescription);
         pButton = findViewById(R.id.pButton);
         cButton = findViewById(R.id.cButton);

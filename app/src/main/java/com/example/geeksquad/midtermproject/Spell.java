@@ -35,7 +35,7 @@ public class Spell {
     }
 
     public void Fireball(LifeForm user, LifeForm target) {
-        int damage = 20;
+        int damage = 10;
         int manaCost = 10;
         int accuracy = 80;
         int modifier = 1;
@@ -49,6 +49,7 @@ public class Spell {
             //TODO: Make sure that the def is never larger than the damage
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
+            if(target.health < 0) target.health = 0;
             BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
@@ -59,7 +60,7 @@ public class Spell {
     }
 
     public void Lightning(LifeForm user, LifeForm target) {
-        int damage = 40;
+        int damage = 15;
         int manaCost = 20;
         int accuracy = 60;
         int modifier = 1;
@@ -73,7 +74,8 @@ public class Spell {
             //TODO: Make sure that the def is never larger than the damage
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
-            BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
+            if(target.health < 0) target.health = 0;
+            BattleActivity.battleText.offer("The lighting hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
@@ -83,7 +85,7 @@ public class Spell {
     }
 
     public void Frostbolt(LifeForm user, LifeForm target) {
-        int damage = 20;
+        int damage = 6;
         int manaCost = 100;
         int accuracy = 90;
         int modifier = 1;
@@ -97,7 +99,8 @@ public class Spell {
             //TODO: Make sure that the def is never larger than the damage
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
-            BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
+            if(target.health < 0) target.health = 0;
+            BattleActivity.battleText.offer("The frostball hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed

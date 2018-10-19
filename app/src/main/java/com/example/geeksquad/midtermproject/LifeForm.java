@@ -24,6 +24,8 @@ public class LifeForm {
 
     public void basicAttack(LifeForm target) {
         target.health -= 10;
+        if(target.health < 0) target.health = 0;
+        BattleActivity.battleText.offer("The " + this.name + "walked up and hit the " + target.name+ "!");
         /*
         if(target.def < this.damage) {
             //A basic attack, although its weak

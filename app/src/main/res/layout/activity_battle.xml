@@ -160,6 +160,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/pButton"
         android:layout_marginBottom="62dp"
+        android:onClick="onSpellCast1"
         android:text="Button"
         android:visibility="invisible" />
 
@@ -169,6 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/spellButton1"
         android:layout_centerHorizontal="true"
+        android:onClick="onSpellCast2"
         android:text="Button"
         android:visibility="invisible" />
 
@@ -178,6 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/spellButton1"
         android:layout_alignEnd="@+id/imageView"
+        android:onClick="onSpellCast3"
         android:text="Button"
         android:visibility="invisible" />
 </RelativeLayout>

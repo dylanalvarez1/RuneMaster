@@ -15,7 +15,12 @@ import java.util.TimerTask;
 
 public class BattleActivity  extends ClosableActivity {
     boolean battleWon;
+    boolean battleLost;
     boolean selectSpell;
+    TextView turnText;
+    TextView playerHealth;
+    TextView playerDef;
+    TextView playerMana;
     LifeForm enemy;
     TextView enemyHealth;
     TextView enemyName;
@@ -43,7 +48,7 @@ public class BattleActivity  extends ClosableActivity {
                 //This is the event queue: If the player does something, then the battle text has something in it, meaning after you update the battle text,
                 //We need to allow the enemy to fight back, we need to disable input(and eventually enable) as well.
 
-
+                updateStats();
                 if(battleText.peek() != null) {
                     //update battle description if the queue has text to go through
                     battleDescription.setText(battleText.poll());
@@ -51,10 +56,12 @@ public class BattleActivity  extends ClosableActivity {
                 }
 
                 else {
-                    battleDescription.setText(" ");
+                    battleDescription.setText("");
+                    turnText.setText("Your Move!");
                     enableInputs();
                     if(enemy.health <= 0) {
                         battleWon = true;
+                        finish();
                     }
                 }
 
@@ -83,39 +90,63 @@ public class BattleActivity  extends ClosableActivity {
         battleWon = false;
         selectSpell = false;
         enemy = new LifeForm("Elder Dragon", 60, 30, 2,10, 1, "None", "ice");
-        enemyHealth.setText("Health: " + enemy.health);
         enemyName.setText(enemy.name);
+        updateStats();
     }
+
+    public void updateStats() { //update health, mana, status of enemy and player
+        enemyHealth.setText("Health: " + Integer.toString(enemy.health));
+        playerHealth.setText("Health" + Integer.toString(SearchingActivity.player.health));
+        playerMana.setText("Mana: " + Integer.toString(SearchingActivity.player.mana));
+
+    }
+
     public void onBasicAttack(View view) {
+        turnText.setText("");
         SearchingActivity.player.basicAttack(enemy);
         String update = "Health: " + Integer.toString(enemy.health);
         battleText.offer("The player walked up and hit the dragon!");
 
         disableInputs();
 
-        enemyHealth.setText(update);
+        //enemyHealth.setText(update);
 
     }
     public void onSpellAttack(View view) {
-        pButton.setVisibility(View.INVISIBLE);
-        cButton.setVisibility(View.INVISIBLE);
-        rButton.setVisibility(View.INVISIBLE);
-        iButton.setVisibility(View.INVISIBLE);
-
-        spellButton1.setVisibility(View.VISIBLE);
-        spellButton2.setVisibility(View.VISIBLE);
-        spellButton3.setVisibility(View.VISIBLE);
-
+        hideMenu();
+        selectSpell = true;
 
     }
     public void onItem(View view) {
 
     }
     public void onRunAway(View view) {
+        battleText.offer("You run away as fast as you can dropping gold in the process.");
+        finish();
+    }
 
+    public void onSpellCast1(View view) {
+        turnText.setText("");
+        SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(0));
+        revertMenu();
+    }
+
+    public void onSpellCast2(View view) {
+        turnText.setText("");
+        SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(1));
+        revertMenu();
+    }
+    public void onSpellCast3(View view) {
+        turnText.setText("");
+        SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(2));
+        revertMenu();
     }
 
     void findElements() {
+        turnText = findViewById(R.id.turnText);
+        playerHealth = findViewById(R.id.playerHealth);
+        playerDef = findViewById(R.id.playerDefense);
+        playerMana = findViewById(R.id.playerMana);
         enemyHealth = findViewById(R.id.enemyHealth);
         enemyName = findViewById(R.id.enemyName);
         battleDescription = findViewById(R.id.battleDescription);
@@ -143,6 +174,27 @@ public class BattleActivity  extends ClosableActivity {
         iButton.setEnabled(false);
         rButton.setEnabled(false);
     }
+    void hideMenu() {
+        pButton.setVisibility(View.INVISIBLE);
+        cButton.setVisibility(View.INVISIBLE);
+        rButton.setVisibility(View.INVISIBLE);
+        iButton.setVisibility(View.INVISIBLE);
+
+        spellButton1.setVisibility(View.VISIBLE);
+        spellButton2.setVisibility(View.VISIBLE);
+        spellButton3.setVisibility(View.VISIBLE);
+    }
+    void revertMenu() {
+        pButton.setVisibility(View.VISIBLE);
+        cButton.setVisibility(View.VISIBLE);
+        rButton.setVisibility(View.VISIBLE);
+        iButton.setVisibility(View.VISIBLE);
+
+        spellButton1.setVisibility(View.INVISIBLE);
+        spellButton2.setVisibility(View.INVISIBLE);
+        spellButton3.setVisibility(View.INVISIBLE);
+    }
+
     @Override
     public void onBackPressed() {
         // Do Here what ever you want do on back press;
@@ -151,7 +203,7 @@ public class BattleActivity  extends ClosableActivity {
             super.onBackPressed();
         }
         if(selectSpell) {
-
+            revertMenu();
         }
     }
 

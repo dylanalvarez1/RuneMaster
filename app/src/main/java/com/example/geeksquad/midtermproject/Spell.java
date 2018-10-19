@@ -17,6 +17,9 @@ public class Spell {
             case "Lightning":
                 Lightning(user, target);
                 break;
+            case "Frostbolt":
+                Frostbolt(user, target);
+                break;
 
         }
     }
@@ -44,10 +47,13 @@ public class Spell {
         }
         if(this.willHit(target.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            target.health -= ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            target.health -= calcDamage;
+            BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
+            BattleActivity.battleText.offer("You unleash fireballs but they all fail to hit. :(");
         }
 
     }
@@ -65,10 +71,37 @@ public class Spell {
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            target.health -= ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            target.health -= calcDamage;
+            BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
+            BattleActivity.battleText.offer("Your barage of lighting fails to connect.");
+        }
+
+    }
+
+    public void Frostbolt(LifeForm user, LifeForm target) {
+        int damage = 20;
+        int manaCost = 100;
+        int accuracy = 90;
+        int modifier = 1;
+
+        user.mana -= manaCost;
+
+        if(target.type == "fire") {
+            modifier = 2;
+        }
+        if(this.willHit(user.status, accuracy)) {
+            //TODO: Make sure that the def is never larger than the damage
+            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            target.health -= calcDamage;
+            BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
+        }
+        else {
+            //You missed
+            BattleActivity.battleText.offer("You only manage to give him a runny nose.");
         }
 
     }

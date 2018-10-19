@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 public class BattleActivity  extends ClosableActivity {
     boolean battleWon;
+    boolean selectSpell;
     LifeForm enemy;
     TextView enemyHealth;
     TextView enemyName;
@@ -22,6 +23,10 @@ public class BattleActivity  extends ClosableActivity {
     Button cButton;
     Button iButton;
     Button rButton;
+    Button spellButton1;
+    Button spellButton2;
+    Button spellButton3;
+
     public static Queue<String> battleText = new LinkedList<String>();
 
     TextView battleDescription;
@@ -47,10 +52,7 @@ public class BattleActivity  extends ClosableActivity {
 
                 else {
                     battleDescription.setText(" ");
-                    pButton.setEnabled(true);
-                    cButton.setEnabled(true);
-                    iButton.setEnabled(true);
-                    rButton.setEnabled(true);
+                    enableInputs();
                     if(enemy.health <= 0) {
                         battleWon = true;
                     }
@@ -77,34 +79,33 @@ public class BattleActivity  extends ClosableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
+        findElements();
         battleWon = false;
+        selectSpell = false;
         enemy = new LifeForm("Elder Dragon", 60, 30, 2,10, 1, "None", "ice");
-        enemyHealth = findViewById(R.id.enemyHealth);
-        enemyName = findViewById(R.id.enemyName);
-        battleDescription = findViewById(R.id.battleDescription);
-        pButton = findViewById(R.id.pButton);
-        cButton = findViewById(R.id.cButton);
-        iButton = findViewById(R.id.iButton);
-        rButton = findViewById(R.id.rButton);
         enemyHealth.setText("Health: " + enemy.health);
         enemyName.setText(enemy.name);
-
     }
     public void onBasicAttack(View view) {
-        enemyHealth = findViewById(R.id.enemyHealth);
         SearchingActivity.player.basicAttack(enemy);
         String update = "Health: " + Integer.toString(enemy.health);
         battleText.offer("The player walked up and hit the dragon!");
 
-        pButton.setEnabled(false);
-        cButton.setEnabled(false);
-        iButton.setEnabled(false);
-        rButton.setEnabled(false);
+        disableInputs();
 
         enemyHealth.setText(update);
 
     }
     public void onSpellAttack(View view) {
+        pButton.setVisibility(View.INVISIBLE);
+        cButton.setVisibility(View.INVISIBLE);
+        rButton.setVisibility(View.INVISIBLE);
+        iButton.setVisibility(View.INVISIBLE);
+
+        spellButton1.setVisibility(View.VISIBLE);
+        spellButton2.setVisibility(View.VISIBLE);
+        spellButton3.setVisibility(View.VISIBLE);
+
 
     }
     public void onItem(View view) {
@@ -114,12 +115,43 @@ public class BattleActivity  extends ClosableActivity {
 
     }
 
+    void findElements() {
+        enemyHealth = findViewById(R.id.enemyHealth);
+        enemyName = findViewById(R.id.enemyName);
+        battleDescription = findViewById(R.id.battleDescription);
+        pButton = findViewById(R.id.pButton);
+        cButton = findViewById(R.id.cButton);
+        iButton = findViewById(R.id.iButton);
+        rButton = findViewById(R.id.rButton);
+        spellButton1 = findViewById(R.id.spellButton1);
+        spellButton2 = findViewById(R.id.spellButton2);
+        spellButton3 = findViewById(R.id.spellButton3);
+        spellButton1.setText(SearchingActivity.player.getSpell(0).name);
+        spellButton2.setText(SearchingActivity.player.getSpell(1).name);
+        spellButton3.setText(SearchingActivity.player.getSpell(2).name);
+    }
+
+    void enableInputs() {
+        pButton.setEnabled(true);
+        cButton.setEnabled(true);
+        iButton.setEnabled(true);
+        rButton.setEnabled(true);
+    }
+    void disableInputs() {
+        pButton.setEnabled(false);
+        cButton.setEnabled(false);
+        iButton.setEnabled(false);
+        rButton.setEnabled(false);
+    }
     @Override
     public void onBackPressed() {
         // Do Here what ever you want do on back press;
         //TODO: Only allow the closure of the intent once you win the battle
         if (battleWon) {
             super.onBackPressed();
+        }
+        if(selectSpell) {
+
         }
     }
 

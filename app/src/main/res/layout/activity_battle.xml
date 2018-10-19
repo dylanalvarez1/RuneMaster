@@ -141,4 +141,43 @@
         android:layout_marginEnd="74dp"
         android:layout_marginTop="213dp"
         android:text="Battle Text" />
+
+    <TextView
+        android:id="@+id/turnText"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="153dp"
+        android:text="Your move!"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/spellButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/pButton"
+        android:layout_marginBottom="62dp"
+        android:text="Button"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/spellButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/spellButton1"
+        android:layout_centerHorizontal="true"
+        android:text="Button"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/spellButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spellButton1"
+        android:layout_alignEnd="@+id/imageView"
+        android:text="Button"
+        android:visibility="invisible" />
 </RelativeLayout>

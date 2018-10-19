@@ -51,7 +51,8 @@ public class LifeForm {
         */
 
     }
-
-
+    public Spell getSpell(int index) {
+        return mySpells.get(index);
+    }
 
 }

@@ -14,6 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class BattleActivity  extends ClosableActivity {
+    boolean battleWon;
     LifeForm enemy;
     TextView enemyHealth;
     TextView enemyName;
@@ -50,6 +51,9 @@ public class BattleActivity  extends ClosableActivity {
                     cButton.setEnabled(true);
                     iButton.setEnabled(true);
                     rButton.setEnabled(true);
+                    if(enemy.health <= 0) {
+                        battleWon = true;
+                    }
                 }
 
 
@@ -73,6 +77,7 @@ public class BattleActivity  extends ClosableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
+        battleWon = false;
         enemy = new LifeForm("Elder Dragon", 60, 30, 2,10, 1, "None", "ice");
         enemyHealth = findViewById(R.id.enemyHealth);
         enemyName = findViewById(R.id.enemyName);
@@ -109,5 +114,13 @@ public class BattleActivity  extends ClosableActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+        //TODO: Only allow the closure of the intent once you win the battle
+        if (battleWon) {
+            super.onBackPressed();
+        }
+    }
 
 }

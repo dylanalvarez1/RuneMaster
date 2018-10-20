@@ -1,7 +1,6 @@
 package com.example.geeksquad.midtermproject;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +27,7 @@ public class SetSpellActivity  extends ClosableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_spell);
+        getSupportActionBar().hide();
         findElements();
     }
 
@@ -40,7 +40,7 @@ public class SetSpellActivity  extends ClosableActivity {
         int spellIndex = 0;
         for(int i = 0; i < spells.length; i++) {
             if(spells[i] == 1) {
-                SearchingActivity.player.setSpell(chooseSpell(i), spellIndex++);
+                MainActivity.player.setSpell(chooseSpell(i), spellIndex++);
             }
         }
         finish();

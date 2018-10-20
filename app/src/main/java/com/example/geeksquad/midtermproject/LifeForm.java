@@ -1,7 +1,6 @@
 package com.example.geeksquad.midtermproject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class LifeForm {
     public int health, mana, maxHealth, level, damage, def;
@@ -73,8 +72,8 @@ public class LifeForm {
     }
 
     public void deathEvent() {
-        SearchingActivity.player.exp += this.level * 10;
-        SearchingActivity.player.gold += this.level * 50;
+        MainActivity.player.exp += this.level * 10;
+        MainActivity.player.gold += this.level * 50;
     }
 
 }

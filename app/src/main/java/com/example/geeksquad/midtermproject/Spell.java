@@ -247,24 +247,24 @@ public class Spell {
 
     }
     public void ExplosiveEnchantment(LifeForm user, LifeForm target) {
-        SearchingActivity.player.spellMod++;
+        MainActivity.player.spellMod++;
         BattleActivity.battleText.offer("The " + user.name + " pulled out a book and started reading it? The " + user.name + "'s spell damage increased!");
     }
     public void ClearDay(LifeForm user, LifeForm target) {
-        SearchingActivity.player.accuracyMod++;
+        MainActivity.player.accuracyMod++;
         BattleActivity.battleText.offer("The " + user.name + " cleared the sky, increasing his accuracy!");
     }
     public void DragonFocus(LifeForm user, LifeForm target) {
-        SearchingActivity.player.defenseMod++;
-        SearchingActivity.player.physicalMod++;
+        MainActivity.player.defenseMod++;
+        MainActivity.player.physicalMod++;
         BattleActivity.battleText.offer("The " + user.name + " used dragon runes to increase both his physical damage and defense!");
     }
     public void IceArmor(LifeForm user, LifeForm target) {
-        SearchingActivity.player.defenseMod++;
+        MainActivity.player.defenseMod++;
         BattleActivity.battleText.offer("The " + user.name + " enchanted his armor with water runes, increasing his defense.");
     }
     public void RockFist(LifeForm user, LifeForm target) {
-        SearchingActivity.player.physicalMod++;
+        MainActivity.player.physicalMod++;
         BattleActivity.battleText.offer("The " + user.name + " enchanted his fist with earth runes, increasing his physical damage.");
     }
     public void Zap(LifeForm user, LifeForm target) {

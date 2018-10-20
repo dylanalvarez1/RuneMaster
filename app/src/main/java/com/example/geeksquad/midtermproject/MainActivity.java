@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
-public class SearchingActivity  extends ClosableActivity {
+public class MainActivity extends ClosableActivity {
    public static Player player;
    Spell fireball;
    Spell frostbolt;
@@ -16,6 +16,7 @@ public class SearchingActivity  extends ClosableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searching);
+        getSupportActionBar().hide();
 
         player = new Player("Player",60, 60, 1,100, 8, 0, "None", "Human");
         fireball = new Spell("Fireball", "fire", 1, "burned");

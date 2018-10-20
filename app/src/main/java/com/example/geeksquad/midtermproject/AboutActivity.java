@@ -1,8 +1,6 @@
 package com.example.geeksquad.midtermproject;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,6 +18,7 @@ public class AboutActivity  extends ClosableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        getSupportActionBar().hide();
         findElements();
         updateStats();
     }
@@ -30,10 +29,10 @@ public class AboutActivity  extends ClosableActivity {
     }
 
     public void onRecoverAtIn(View view) {
-        if(SearchingActivity.player.gold - 250 >= 0) {
-            SearchingActivity.player.gold -= 250;
-            SearchingActivity.player.health = SearchingActivity.player.maxHealth;
-            SearchingActivity.player.mana = SearchingActivity.player.maxMana;
+        if(MainActivity.player.gold - 250 >= 0) {
+            MainActivity.player.gold -= 250;
+            MainActivity.player.health = MainActivity.player.maxHealth;
+            MainActivity.player.mana = MainActivity.player.maxMana;
             updateStats();
         }
     }
@@ -48,11 +47,11 @@ public class AboutActivity  extends ClosableActivity {
     }
 
     void updateStats() { //update health, mana, status of enemy and player
-        playerHealth.setText("Health: " + Integer.toString(SearchingActivity.player.health) + " / " + Integer.toString(SearchingActivity.player.maxHealth));
-        playerMana.setText("Mana: " + Integer.toString(SearchingActivity.player.mana) + " / " + Integer.toString(SearchingActivity.player.maxMana));
-        playerStatus.setText("Status: " + SearchingActivity.player.status);
-        playerLevel.setText("Level: " + SearchingActivity.player.level);
-        playerGold.setText("Gold: " + SearchingActivity.player.gold);
-        playerExp.setText("Exp: " + SearchingActivity.player.exp);
+        playerHealth.setText("Health: " + Integer.toString(MainActivity.player.health) + " / " + Integer.toString(MainActivity.player.maxHealth));
+        playerMana.setText("Mana: " + Integer.toString(MainActivity.player.mana) + " / " + Integer.toString(MainActivity.player.maxMana));
+        playerStatus.setText("Status: " + MainActivity.player.status);
+        playerLevel.setText("Level: " + MainActivity.player.level);
+        playerGold.setText("Gold: " + MainActivity.player.gold);
+        playerExp.setText("Exp: " + MainActivity.player.exp);
     }
 }

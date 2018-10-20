@@ -58,7 +58,7 @@ public class LifeForm {
     }
 
     public void deathEvent() {
-        SearchingActivity.player.exp += this.level * 50;
+        SearchingActivity.player.exp += this.level * 101;
     }
 
 }

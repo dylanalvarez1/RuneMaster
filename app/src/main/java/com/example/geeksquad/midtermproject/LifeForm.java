@@ -9,10 +9,11 @@ public class LifeForm {
     public int accuracyMod;
     public int defenseMod;
     public int spellMod;
+    public int imageSource;
     public ArrayList<Spell> mySpells = new ArrayList<Spell>(3);
     public Spell loadedSpell = null;
 
-    public LifeForm(String name, int health, int mana, int level, int damage, int def, String status, String type) {
+    public LifeForm(String name, int health, int mana, int level, int def, String status, String type, int imageSource) {
         this.name = name;
         this.health = health;
         this.maxHealth = health;
@@ -21,6 +22,7 @@ public class LifeForm {
         this.def = def;
         this.status = status;
         this.type = type;
+        this.imageSource = imageSource;
 
         this.physicalMod = 1;
         this.accuracyMod = 1;
@@ -33,7 +35,7 @@ public class LifeForm {
     public void basicAttack(LifeForm target) {
         target.health -= 10;
         if(target.health < 0) target.health = 0;
-        BattleActivity.battleText.offer("The " + this.name + "walked up and hit the " + target.name+ "!");
+        BattleActivity.battleText.offer("The " + this.name + " walked up and hit the " + target.name+ "!");
         /*
         if(target.def < this.damage) {
             //A basic attack, although its weak

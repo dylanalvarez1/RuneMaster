@@ -18,7 +18,7 @@ public class MainActivity extends ClosableActivity {
         setContentView(R.layout.activity_searching);
         getSupportActionBar().hide();
 
-        player = new Player("Player",60, 60, 1,100, 8, 0, "None", "Human");
+        player = new Player("Player",200, 150, 1,100, 50, 0, "None", "Human", 0);
         fireball = new Spell("Fireball", "fire", 1, "burned");
         frostbolt = new Spell("Frostbolt", "ice", 1, "freezed");
         lightning = new Spell("Lightning", "electric", 1, "shocked");

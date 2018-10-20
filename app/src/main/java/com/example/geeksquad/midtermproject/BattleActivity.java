@@ -1,5 +1,6 @@
 package com.example.geeksquad.midtermproject;
 
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
@@ -120,7 +121,7 @@ public class BattleActivity  extends ClosableActivity {
         battleWon = false;
         selectSpell = false;
         enemyTurn = false;
-        enemy = new LifeForm("Elder Dragon Pup", 60, 30, 1,10, 1, "None", "ice");
+        enemy = EnemyGenerator.newEnemy();
         setStaticFields();
         updateStats();
     }
@@ -129,6 +130,7 @@ public class BattleActivity  extends ClosableActivity {
         enemyName.setText(enemy.name);
         enemyLevel.setText("Level: " + Integer.toString(enemy.level));
         playerLevel.setText("Level: " + Integer.toString(MainActivity.player.level));
+        enemyIcon.setImageResource(enemy.imageSource);
     }
 
     void updateStats() { //update health, mana, status of enemy and player
@@ -224,7 +226,7 @@ public class BattleActivity  extends ClosableActivity {
         playerLevel = findViewById(R.id.playerLevel);
         playerMana = findViewById(R.id.playerMana);
         playerStatus = findViewById(R.id.playerStatus);
-        playerName = findViewById(R.id.playerName);
+        //playerName = findViewById(R.id.playerName);
         enemyHealth = findViewById(R.id.enemyHealth);
         enemyLevel = findViewById(R.id.enemyLevel);
         enemyStatus = findViewById(R.id.enemyStatus);

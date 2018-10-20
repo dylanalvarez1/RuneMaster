@@ -14,6 +14,7 @@ public class BattleActivity  extends ClosableActivity {
     boolean battleWon;
     boolean battleLost;
     boolean selectSpell;
+    boolean enemyTurn;
     TextView turnText;
     TextView playerHealth;
     TextView playerLevel;
@@ -54,6 +55,12 @@ public class BattleActivity  extends ClosableActivity {
                     //update battle description if the queue has text to go through
                     battleDescription.setText(battleText.poll());
 
+                    //If user attacked then the enemy gets to attack back
+                    if(enemyTurn) {
+                        enemy.basicAttack(SearchingActivity.player);
+                        enemyTurn = !enemyTurn;
+                    }
+
                 }
 
                 else {
@@ -61,8 +68,14 @@ public class BattleActivity  extends ClosableActivity {
                     turnText.setText("Your Move!");
                     enableInputs();
                     if(enemy.health <= 0) {
-                        battleWon = true;
-                        finish();
+                        if(!battleWon) {
+                            battleWon = true;
+                            SearchingActivity.player.levelUp();
+                        }
+                        else { //Do this so they have a chance to see the level up text
+                            finish();
+                        }
+
                     }
                 }
 
@@ -90,6 +103,7 @@ public class BattleActivity  extends ClosableActivity {
         findElements();
         battleWon = false;
         selectSpell = false;
+        enemyTurn = false;
         enemy = new LifeForm("Elder Dragon Pup", 60, 30, 1,10, 1, "None", "ice");
         setStaticFields();
         updateStats();
@@ -114,6 +128,7 @@ public class BattleActivity  extends ClosableActivity {
     public void onBasicAttack(View view) {
         turnText.setText("");
         SearchingActivity.player.basicAttack(enemy);
+        enemyTurn = true;
         disableInputs();
 
     }
@@ -133,6 +148,7 @@ public class BattleActivity  extends ClosableActivity {
     public void onSpellCast1(View view) {
         turnText.setText("");
         SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(0));
+        enemyTurn = true;
         revertMenu();
         disableInputs();
     }
@@ -140,12 +156,14 @@ public class BattleActivity  extends ClosableActivity {
     public void onSpellCast2(View view) {
         turnText.setText("");
         SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(1));
+        enemyTurn = true;
         revertMenu();
         disableInputs();
     }
     public void onSpellCast3(View view) {
         turnText.setText("");
         SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(2));
+        enemyTurn = true;
         revertMenu();
         disableInputs();
     }

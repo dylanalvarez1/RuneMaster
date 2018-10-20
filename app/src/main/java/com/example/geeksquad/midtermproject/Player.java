@@ -6,6 +6,7 @@ import java.util.Collection;
 public class Player extends LifeForm{
 
     public int  maxMana, gold;
+    public int exp = 0;
     public String type;
 
 
@@ -18,6 +19,29 @@ public class Player extends LifeForm{
         this.maxMana = mana;
         this.gold = gold;
         earth = electric = fire = water = ice = dragon = 0;
+    }
+
+    public void levelUp() {
+        switch(this.level) {
+            case 1:
+                if(this.exp > 100) {
+                    this.level++;
+                    BattleActivity.battleText.offer("Congradulations! You leveled up to level " + Integer.toString(this.level) + "!");
+                }
+                break;
+            case 2:
+                if(this.exp > 250) {
+                    this.level++;
+                    BattleActivity.battleText.offer("Congradulations! You leveled up to level " + Integer.toString(this.level) + "!");
+                }
+                break;
+            default:
+                if(this.exp > this.level * 500)
+                {
+                    this.level++;
+                    BattleActivity.battleText.offer("Congradulations! You leveled up to level " + Integer.toString(this.level) + "!");
+                }
+        }
     }
 
 }

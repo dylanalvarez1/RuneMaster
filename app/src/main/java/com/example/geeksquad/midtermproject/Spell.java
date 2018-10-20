@@ -28,8 +28,26 @@ public class Spell {
             case "Earthquake":
                 Earthquake(user, target);
                 break;
-            case "Solarbeam":
-                Solarbeam(user, target);
+            case "GrassCannon":
+                GrassCannon(user, target);
+                break;
+            case "ExplosiveEnchantment":
+                ExplosiveEnchantment(user, target);
+                break;
+            case "ClearDay":
+                ClearDay(user, target);
+                break;
+            case "DragonFocus":
+                DragonFocus(user, target);
+                break;
+            case "IceArmor":
+                IceArmor(user, target);
+                break;
+            case "RockFist":
+                RockFist(user, target);
+                break;
+            case "Zap":
+                Zap(user, target);
                 break;
 
         }
@@ -51,8 +69,26 @@ public class Spell {
             case "Earthquake":
                 this.cost = 60;
                 break;
-            case "Solarbeam":
+            case "GrassCannon":
                 this.cost = 70;
+                break;
+            case "ExplosiveEnchantment":
+                this.cost = 30;
+                break;
+            case "ClearDay":
+                this.cost = 45;
+                break;
+            case "DragonFocus":
+                this.cost = 30;
+                break;
+            case "IceArmor":
+                this.cost = 10;
+                break;
+            case "RockFist":
+                this.cost = 10;
+                break;
+            case "Zap":
+                this.cost = 10;
                 break;
 
         }
@@ -187,7 +223,7 @@ public class Spell {
 
     }
 
-    public void Solarbeam(LifeForm user, LifeForm target) {
+    public void GrassCannon(LifeForm user, LifeForm target) {
         int damage = 6;
         int accuracy = 90;
         int modifier = 1;

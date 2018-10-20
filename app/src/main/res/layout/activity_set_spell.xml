@@ -30,18 +30,22 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button25"
+                android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fireball" />
+                android:onClick="onButton1"
+                android:text="Fireball"
+                android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button26"
+                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fire Spin" />
+                android:onClick="onButton2"
+                android:text="Lightning"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,18 +54,22 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button27"
+                android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Shock" />
+                android:onClick="onButton3"
+                android:text="Frostbolt"
+                android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button28"
+                android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Lightning" />
+                android:onClick="onButton4"
+                android:text="Dragonbreath"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,18 +78,22 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button30"
+                android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Hail storm" />
+                android:onClick="onButton5"
+                android:text="Earthquake"
+                android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button29"
+                android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ice armor" />
+                android:onClick="onButton6"
+                android:text="Grass Cannon"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,18 +102,22 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button32"
+                android:id="@+id/button7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Photosynthesis" />
+                android:onClick="onButton7"
+                android:text="Explosive Enchantment"
+                android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button31"
+                android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Grass beam" />
+                android:onClick="onButton8"
+                android:text="Clear Day"
+                android:textAlignment="center" />
 
         </LinearLayout>
 
@@ -112,19 +128,59 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button33"
+                android:id="@+id/button9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dragon Speed" />
+                android:onClick="onButton9"
+                android:text="Dragon Focus"
+                android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button34"
+                android:id="@+id/button10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dragon Breath" />
+                android:onClick="onButton10"
+                android:text="Ice Armor"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onButton11"
+                android:text="Rock Fist"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onButton12"
+                android:text="Zap"
+                android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onSubmit"
+        android:text="Choose"
+        android:visibility="invisible" />
 
 </RelativeLayout>

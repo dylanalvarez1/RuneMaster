@@ -6,6 +6,10 @@ import java.util.Collection;
 public class LifeForm {
     public int health, mana, maxHealth, level, damage, def;
     public String name, status, type;
+    public int physicalMod;
+    public int accuracyMod;
+    public int defenseMod;
+    public int spellMod;
     public ArrayList<Spell> mySpells = new ArrayList<Spell>(3);
     public Spell loadedSpell = null;
 
@@ -18,6 +22,11 @@ public class LifeForm {
         this.def = def;
         this.status = status;
         this.type = type;
+
+        this.physicalMod = 1;
+        this.accuracyMod = 1;
+        this.defenseMod = 1;
+        this.spellMod = 1;
 
 
     }
@@ -57,8 +66,15 @@ public class LifeForm {
         return mySpells.get(index);
     }
 
+    public void clearModifiers() {
+        this.physicalMod = 1;
+        this.accuracyMod = 1;
+        this.defenseMod = 1;
+    }
+
     public void deathEvent() {
-        SearchingActivity.player.exp += this.level * 101;
+        SearchingActivity.player.exp += this.level * 10;
+        SearchingActivity.player.gold += this.level * 50;
     }
 
 }

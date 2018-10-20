@@ -70,9 +70,12 @@ public class BattleActivity  extends ClosableActivity {
                     turnText.setText("Your Move!");
                     enableInputs();
                     if(enemy.health <= 0) {
+                        turnText.setText("");
+                        disableInputs();
                         if(!battleWon) {
                             battleWon = true;
                             battleDescription.setText("You killed the " + enemy.name + "!");
+                            SearchingActivity.player.clearModifiers();
                             SearchingActivity.player.levelUp();
                         }
                         else { //Do this so they have a chance to see the level up text
@@ -112,13 +115,13 @@ public class BattleActivity  extends ClosableActivity {
         updateStats();
     }
 
-    public void setStaticFields() {
+    void setStaticFields() {
         enemyName.setText(enemy.name);
         enemyLevel.setText("Level: " + Integer.toString(enemy.level));
         playerLevel.setText("Level: " + Integer.toString(SearchingActivity.player.level));
     }
 
-    public void updateStats() { //update health, mana, status of enemy and player
+    void updateStats() { //update health, mana, status of enemy and player
         enemyHealth.setText("Health: " + Integer.toString(enemy.health));
         enemyStatus.setText("Status: " + enemy.status);
         playerHealth.setText("Health: " + Integer.toString(SearchingActivity.player.health));

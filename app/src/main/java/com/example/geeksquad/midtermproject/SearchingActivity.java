@@ -17,7 +17,7 @@ public class SearchingActivity  extends ClosableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searching);
 
-        player = new Player("Player",60, 30, 1,100, 8, 0, "None", "Human");
+        player = new Player("Player",60, 60, 1,100, 8, 0, "None", "Human");
         fireball = new Spell("Fireball", "fire", 1, "burned");
         frostbolt = new Spell("Frostbolt", "ice", 1, "freezed");
         lightning = new Spell("Lightning", "electric", 1, "shocked");

@@ -24,24 +24,32 @@ public class Player extends LifeForm{
     public void levelUp() {
         switch(this.level) {
             case 1:
-                if(this.exp > 100) {
+                if(this.exp >= 100) {
                     this.level++;
-                    BattleActivity.battleText.offer("Congradulations! You leveled up to level " + Integer.toString(this.level) + "!");
+                    this.maxHealth += 50;
+                    this.maxMana *= (int) 1.5;
+                    BattleActivity.battleText.offer("Congratulations! You leveled up to level " + Integer.toString(this.level) + "!");
                 }
                 break;
             case 2:
-                if(this.exp > 250) {
+                if(this.exp >= 250) {
                     this.level++;
-                    BattleActivity.battleText.offer("Congradulations! You leveled up to level " + Integer.toString(this.level) + "!");
+                    this.maxHealth += 150;
+                    this.maxMana *= 2;
+                    BattleActivity.battleText.offer("Congratulations! You leveled up to level " + Integer.toString(this.level) + "!");
                 }
                 break;
             default:
-                if(this.exp > this.level * 500)
+                if(this.exp >= this.level * 500)
                 {
                     this.level++;
-                    BattleActivity.battleText.offer("Congradulations! You leveled up to level " + Integer.toString(this.level) + "!");
+                    this.maxHealth += this.level*50;
+                    this.maxMana += this.level*100;
+                    BattleActivity.battleText.offer("Congratulations! You leveled up to level " + Integer.toString(this.level) + "!");
                 }
         }
     }
+
+
 
 }

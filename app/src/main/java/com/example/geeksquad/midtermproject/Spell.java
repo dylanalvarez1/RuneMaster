@@ -71,7 +71,6 @@ public class Spell {
 
     public void Fireball(LifeForm user, LifeForm target) {
         int damage = 10;
-        int manaCost = 10;
         int accuracy = 80;
         int modifier = 1;
 
@@ -85,18 +84,17 @@ public class Spell {
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + "'s fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("You unleash fireballs but they all fail to hit. :(");
+            BattleActivity.battleText.offer(user.name + "unleashes multiple fireballs at " + target.name + " but they all fail to hit. ");
         }
 
     }
 
     public void Lightning(LifeForm user, LifeForm target) {
         int damage = 15;
-        int manaCost = 20;
         int accuracy = 60;
         int modifier = 1;
 
@@ -110,18 +108,17 @@ public class Spell {
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The lighting hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + "'s lighting hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("Your barage of lighting fails to connect.");
+            BattleActivity.battleText.offer(user.name + "'s barage of lighting fails to connect.");
         }
 
     }
 
     public void Frostbolt(LifeForm user, LifeForm target) {
         int damage = 6;
-        int manaCost = 100;
         int accuracy = 90;
         int modifier = 1;
 
@@ -135,17 +132,16 @@ public class Spell {
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The frostball hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + "'s frostball hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("You only manage to give him a runny nose.");
+            BattleActivity.battleText.offer("The " + user.name + " only manage to give " + target.name + " a runny nose.");
         }
 
     }
     public void Dragonbreath(LifeForm user, LifeForm target) {
         int damage = 10;
-        int manaCost = 10;
         int accuracy = 80;
         int modifier = 1;
 
@@ -158,18 +154,17 @@ public class Spell {
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The dragonbreath hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + "'s dragonbreath hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("You unleash fireballs but they all fail to hit. :(");
+            BattleActivity.battleText.offer(user.name + " barely misses their attack!");
         }
 
     }
 
     public void Earthquake(LifeForm user, LifeForm target) {
         int damage = 15;
-        int manaCost = 20;
         int accuracy = 60;
         int modifier = 1;
 
@@ -183,18 +178,17 @@ public class Spell {
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The earth hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + "shook the ground hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("Your barage of lighting fails to connect.");
+            BattleActivity.battleText.offer(user.name + "'s barage of lighting fails to connect.");
         }
 
     }
 
     public void Solarbeam(LifeForm user, LifeForm target) {
         int damage = 6;
-        int manaCost = 100;
         int accuracy = 90;
         int modifier = 1;
 
@@ -208,12 +202,37 @@ public class Spell {
             int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The grass hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer("The " + user.name + "shot a grass cannon dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("You only manage to give him a runny nose.");
+            BattleActivity.battleText.offer("The " + user.name + " only manage to give " + target.name + " a runny nose.");
         }
 
+    }
+    public void ExplosiveEnchantment(LifeForm user, LifeForm target) {
+        SearchingActivity.player.spellMod++;
+        BattleActivity.battleText.offer("The " + user.name + " pulled out a book and started reading it? The " + user.name + "'s spell damage increased!");
+    }
+    public void ClearDay(LifeForm user, LifeForm target) {
+        SearchingActivity.player.accuracyMod++;
+        BattleActivity.battleText.offer("The " + user.name + " cleared the sky, increasing his accuracy!");
+    }
+    public void DragonFocus(LifeForm user, LifeForm target) {
+        SearchingActivity.player.defenseMod++;
+        SearchingActivity.player.physicalMod++;
+        BattleActivity.battleText.offer("The " + user.name + " used dragon runes to increase both his physical damage and defense!");
+    }
+    public void IceArmor(LifeForm user, LifeForm target) {
+        SearchingActivity.player.defenseMod++;
+        BattleActivity.battleText.offer("The " + user.name + " enchanted his armor with water runes, increasing his defense.");
+    }
+    public void RockFist(LifeForm user, LifeForm target) {
+        SearchingActivity.player.physicalMod++;
+        BattleActivity.battleText.offer("The " + user.name + " enchanted his fist with earth runes, increasing his physical damage.");
+    }
+    public void Zap(LifeForm user, LifeForm target) {
+        target.status = "shocked";
+        BattleActivity.battleText.offer("The " + user.name + " zapped the " + target.name + ", shocking him!");
     }
 }

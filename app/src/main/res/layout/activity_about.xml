@@ -7,39 +7,38 @@
     tools:context=".AboutActivity">
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/playerHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_alignTop="@+id/playerLevel"
+        android:layout_toStartOf="@+id/button8"
         android:text="Health: 40 / 200" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/playerMana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp"
+        android:layout_alignStart="@+id/playerHealth"
+        android:layout_below="@+id/playerHealth"
         android:text="Mana: 60 / 100" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/playerLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="131dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView16"
+        android:layout_marginEnd="39dp"
         android:text="Level: 3" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="145dp"
         android:layout_height="123dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="159dp"
+        android:layout_marginTop="161dp"
+        android:onClick="onSetSpells"
         android:text="Set Spells" />
 
     <TextView
@@ -54,29 +53,36 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/playerStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="187dp"
+        android:layout_alignStart="@+id/playerHealth"
+        android:layout_below="@+id/playerMana"
         android:text="Status: Normal" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/playerGold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="157dp"
+        android:layout_alignStart="@+id/playerLevel"
+        android:layout_below="@+id/playerMana"
         android:text="Gold: 50g" />
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="117dp"
-        android:layout_height="81dp"
+        android:layout_width="176dp"
+        android:layout_height="105dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
-        android:text="Recover at the inn (cost gold)" />
+        android:layout_marginBottom="70dp"
+        android:onClick="onRecoverAtIn"
+        android:text="Recover at the inn (costs 250 gold)" />
+
+    <TextView
+        android:id="@+id/playerExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/playerLevel"
+        android:layout_alignTop="@+id/playerMana"
+        android:text="Exp: 50" />
 </RelativeLayout>

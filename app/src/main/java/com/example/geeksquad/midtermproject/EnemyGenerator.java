@@ -13,7 +13,7 @@ public class EnemyGenerator {
         //Set the spells for the enemy
         int spellIndex = 0;
         for(int i = 0; i < 3; i++) {
-            int rand = getRandomNumberInRange(0, 12);
+            int rand = getRandomNumberInRange(0, 11);
             enemy.setSpell(chooseSpell(rand), spellIndex++);
         }
         return enemy;

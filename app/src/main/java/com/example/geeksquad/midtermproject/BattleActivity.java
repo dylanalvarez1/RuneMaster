@@ -66,7 +66,7 @@ public class BattleActivity  extends ClosableActivity {
 
                     //If user attacked then the enemy gets to attack back
                     if(enemyTurn) {
-                        if(enemy.health > 0) enemy.basicAttack(MainActivity.player);
+                        if(enemy.health > 0) enemy.randomAttack(MainActivity.player);
                         else enemy.deathEvent();
                         enemyTurn = !enemyTurn;
                         if(MainActivity.player.health <= 0) {

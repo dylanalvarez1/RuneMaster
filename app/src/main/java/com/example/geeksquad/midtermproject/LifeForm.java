@@ -32,6 +32,33 @@ public class LifeForm {
 
     }
 
+    public void randomAttack(LifeForm target) {
+        int random = getRandomNumberInRange(0, 3);
+        switch(random) {
+            case 0:
+                castSpell(target, getSpell(0));
+                break;
+            case 1:
+                castSpell(target, getSpell(1));
+                break;
+            case 2:
+                castSpell(target, getSpell(2));
+                break;
+            case 4:
+                basicAttack(target);
+                break;
+        }
+    }
+
+    private static int getRandomNumberInRange(int min, int max) {
+
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+
+        return (int)(Math.random() * ((max - min) + 1)) + min;
+    }
+
     public void basicAttack(LifeForm target) {
         target.health -= 10;
         if(target.health < 0) target.health = 0;

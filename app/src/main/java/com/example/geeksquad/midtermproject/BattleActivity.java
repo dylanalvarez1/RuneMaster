@@ -20,6 +20,7 @@ public class BattleActivity  extends ClosableActivity {
     TextView playerLevel;
     TextView playerMana;
     TextView playerStatus;
+    TextView playerName;
     LifeForm enemy;
     TextView enemyHealth;
     TextView enemyName;
@@ -57,7 +58,7 @@ public class BattleActivity  extends ClosableActivity {
 
                     //If user attacked then the enemy gets to attack back
                     if(enemyTurn) {
-                        enemy.basicAttack(SearchingActivity.player);
+                        if(enemy.health < 0) enemy.basicAttack(SearchingActivity.player);
                         enemyTurn = !enemyTurn;
                     }
 
@@ -70,6 +71,7 @@ public class BattleActivity  extends ClosableActivity {
                     if(enemy.health <= 0) {
                         if(!battleWon) {
                             battleWon = true;
+                            battleDescription.setText("You killed the " + enemy.name + "!");
                             SearchingActivity.player.levelUp();
                         }
                         else { //Do this so they have a chance to see the level up text
@@ -122,6 +124,25 @@ public class BattleActivity  extends ClosableActivity {
         playerMana.setText("Mana: " + Integer.toString(SearchingActivity.player.mana));
         playerStatus.setText("Status: " + SearchingActivity.player.status);
 
+        if(SearchingActivity.player.mana - SearchingActivity.player.getSpell(0).cost < 0) {
+            spellButton1.setEnabled(false);
+        }
+        else {
+            spellButton1.setEnabled(true);
+        }
+        if(SearchingActivity.player.mana - SearchingActivity.player.getSpell(1).cost < 0) {
+            spellButton2.setEnabled(false);
+        }
+        else {
+            spellButton2.setEnabled(true);
+        }
+        if(SearchingActivity.player.mana - SearchingActivity.player.getSpell(2).cost < 0) {
+            spellButton3.setEnabled(false);
+        }
+        else {
+            spellButton3.setEnabled(true);
+        }
+
 
     }
 
@@ -146,26 +167,41 @@ public class BattleActivity  extends ClosableActivity {
     }
 
     public void onSpellCast1(View view) {
-        turnText.setText("");
-        SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(0));
-        enemyTurn = true;
-        revertMenu();
-        disableInputs();
+        if(SearchingActivity.player.mana - SearchingActivity.player.getSpell(0).cost >= 0)
+        {
+            SearchingActivity.player.mana -= SearchingActivity.player.getSpell(0).cost;
+            turnText.setText("");
+            SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(0));
+            enemyTurn = true;
+            revertMenu();
+            disableInputs();
+        }
+
     }
 
     public void onSpellCast2(View view) {
-        turnText.setText("");
-        SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(1));
-        enemyTurn = true;
-        revertMenu();
-        disableInputs();
+        if(SearchingActivity.player.mana - SearchingActivity.player.getSpell(1).cost >= 0)
+        {
+            SearchingActivity.player.mana -= SearchingActivity.player.getSpell(1).cost;
+            turnText.setText("");
+            SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(1));
+            enemyTurn = true;
+            revertMenu();
+            disableInputs();
+        }
+
     }
     public void onSpellCast3(View view) {
-        turnText.setText("");
-        SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(2));
-        enemyTurn = true;
-        revertMenu();
-        disableInputs();
+        if(SearchingActivity.player.mana - SearchingActivity.player.getSpell(2).cost >= 0)
+        {
+            SearchingActivity.player.mana -= SearchingActivity.player.getSpell(2).cost;
+            turnText.setText("");
+            SearchingActivity.player.castSpell(enemy, SearchingActivity.player.getSpell(2));
+            enemyTurn = true;
+            revertMenu();
+            disableInputs();
+        }
+
     }
 
     void findElements() {
@@ -174,6 +210,7 @@ public class BattleActivity  extends ClosableActivity {
         playerLevel = findViewById(R.id.playerLevel);
         playerMana = findViewById(R.id.playerMana);
         playerStatus = findViewById(R.id.playerStatus);
+        playerName = findViewById(R.id.playerName);
         enemyHealth = findViewById(R.id.enemyHealth);
         enemyLevel = findViewById(R.id.enemyLevel);
         enemyStatus = findViewById(R.id.enemyStatus);

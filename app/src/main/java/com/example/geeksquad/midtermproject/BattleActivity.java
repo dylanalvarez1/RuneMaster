@@ -69,6 +69,9 @@ public class BattleActivity  extends ClosableActivity {
                         if(enemy.health > 0) enemy.basicAttack(MainActivity.player);
                         else enemy.deathEvent();
                         enemyTurn = !enemyTurn;
+                        if(MainActivity.player.health <= 0) {
+                            battleText.offer(MainActivity.player.name + " was defeated! They lost all their gold.");
+                        }
                     }
 
                 }
@@ -90,6 +93,10 @@ public class BattleActivity  extends ClosableActivity {
                             finish();
                         }
 
+                    }
+                    if(MainActivity.player.health <= 0) {
+                        MainActivity.player.death(MainActivity.player);
+                        finish();
                     }
                 }
 

@@ -21,6 +21,13 @@ public class Player extends LifeForm{
         earth = electric = fire = water = ice = dragon = 0;
     }
 
+    public void death(Player player) {
+        player.health = player.maxHealth;
+        player.mana = player.maxMana;
+        player.gold = 0;
+
+    }
+
     public void levelUp() {
         switch(this.level) {
             case 1:

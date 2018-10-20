@@ -11,11 +11,12 @@
         android:id="@+id/enemyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:text="Enemy Name"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/enemyHealth"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -31,69 +32,66 @@
         android:id="@+id/enemyHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="84dp"
         android:text="Health: 80"
-        app:layout_constraintStart_toStartOf="@+id/enemyLevel"
+        app:layout_constraintStart_toStartOf="@+id/enemyName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/enemyType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:text="Type: Fire"
-        app:layout_constraintEnd_toEndOf="@+id/enemyName"
+        app:layout_constraintStart_toEndOf="@+id/enemyHealth"
         app:layout_constraintTop_toTopOf="@+id/enemyHealth" />
 
     <TextView
         android:id="@+id/enemyLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="16dp"
         android:text="Level 60"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/enemyHealth"
+        app:layout_constraintTop_toBottomOf="@+id/enemyHealth" />
 
     <TextView
         android:id="@+id/playerHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginStart="32dp"
         android:text="Health: 35"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/playerMana"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/turnText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintVertical_bias="0.973" />
 
     <TextView
         android:id="@+id/playerMana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="Mana: 90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/playerLevel"
+        app:layout_constraintBottom_toTopOf="@+id/turnText"
+        app:layout_constraintStart_toEndOf="@+id/playerHealth"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintVertical_bias="0.972" />
 
     <TextView
         android:id="@+id/playerLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:text="Level: "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/playerStatus"
+        app:layout_constraintBottom_toTopOf="@+id/turnText"
+        app:layout_constraintStart_toEndOf="@+id/playerMana"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintVertical_bias="0.972" />
 
     <Button
         android:id="@+id/pButton"
@@ -124,18 +122,20 @@
         android:id="@+id/rButton"
         android:layout_width="141dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:onClick="onRunAway"
         android:text="Run Away"
-        app:layout_constraintStart_toStartOf="@+id/enemyIcon"
+        app:layout_constraintStart_toEndOf="@+id/pButton"
         app:layout_constraintTop_toTopOf="@+id/pButton" />
 
     <Button
         android:id="@+id/iButton"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:onClick="onItem"
         android:text="Item"
-        app:layout_constraintEnd_toEndOf="@+id/enemyIcon"
+        app:layout_constraintStart_toEndOf="@+id/cButton"
         app:layout_constraintTop_toTopOf="@+id/cButton" />
 
     <TextView
@@ -153,7 +153,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView11"
@@ -175,48 +175,50 @@
         android:id="@+id/turnText"
         android:layout_width="109dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="188dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="168dp"
         android:text="Your move!"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/battleDescription" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/spellButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="62dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="32dp"
         android:onClick="onSpellCast1"
         android:text="Button"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/pButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/spellButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:onClick="onSpellCast2"
         android:text="Button"
         android:visibility="invisible"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spellButton1"
         app:layout_constraintTop_toTopOf="@+id/spellButton1" />
 
     <Button
         android:id="@+id/spellButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
         android:onClick="onSpellCast3"
         android:text="Button"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/spellButton1"
-        app:layout_constraintEnd_toEndOf="@+id/enemyIcon" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spellButton2"
+        app:layout_constraintTop_toTopOf="@+id/spellButton1" />
 
     <TextView
         android:id="@+id/enemyStatus"
@@ -242,11 +244,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="Status: Fine"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/turnText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playerLevel"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintVertical_bias="0.972" />
 
 </android.support.constraint.ConstraintLayout>

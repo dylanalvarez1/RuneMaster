@@ -3,6 +3,7 @@ package com.example.geeksquad.midtermproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class AboutActivity  extends ClosableActivity {
@@ -12,6 +13,7 @@ public class AboutActivity  extends ClosableActivity {
     TextView playerStatus;
     TextView playerExp;
     TextView playerGold;
+    Button recoverButton;
 
 
     @Override
@@ -44,6 +46,7 @@ public class AboutActivity  extends ClosableActivity {
         playerStatus = findViewById(R.id.playerStatus);
         playerExp = findViewById(R.id.playerExp);
         playerGold = findViewById(R.id.playerGold);
+        recoverButton = findViewById(R.id.recoverButton);
     }
 
     void updateStats() { //update health, mana, status of enemy and player
@@ -53,5 +56,7 @@ public class AboutActivity  extends ClosableActivity {
         playerLevel.setText("Level: " + MainActivity.player.level);
         playerGold.setText("Gold: " + MainActivity.player.gold);
         playerExp.setText("Exp: " + MainActivity.player.exp);
+        if(MainActivity.player.gold < 250) recoverButton.setEnabled(false);
+        else recoverButton.setEnabled(true);
     }
 }

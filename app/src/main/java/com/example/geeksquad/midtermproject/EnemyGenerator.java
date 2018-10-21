@@ -120,7 +120,7 @@ public class EnemyGenerator {
                 imageSource = R.drawable.icegolem;
                 break;
         }
-        def *= level;
+        def = level;
         return new LifeForm(adj1 + adj2 + noun, health, mana, level, def, status, type, imageSource);
     }
 

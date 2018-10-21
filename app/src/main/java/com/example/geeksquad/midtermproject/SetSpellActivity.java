@@ -55,13 +55,13 @@ public class SetSpellActivity  extends ClosableActivity {
             case 2:
                 return new Spell("Frostbolt", "ice", 1, "freezed");
             case 3:
-                return new Spell("Dragonbreath", "dragon", 1, "none");
+                return new Spell("Tsunami", "water", 1, "none");
             case 4:
                 return new Spell("Earthquake", "ground", 1, "none");
             case 5:
                 return new Spell("GrassCannon", "grass", 1, "none");
             case 6:
-                return new Spell("ExplosiveEnchantment", "fire", 1, "none");
+                return new Spell("Enchantment", "fire", 1, "none");
             case 7:
                 return new Spell("ClearDay", "grass", 1, "none");
             case 8:

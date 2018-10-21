@@ -22,8 +22,8 @@ public class Spell {
             case "Frostbolt":
                 Frostbolt(user, target);
                 break;
-            case "Dragonbreath":
-                Dragonbreath(user, target);
+            case "Tsunami":
+                Tsunami(user, target);
                 break;
             case "Earthquake":
                 Earthquake(user, target);
@@ -31,7 +31,7 @@ public class Spell {
             case "GrassCannon":
                 GrassCannon(user, target);
                 break;
-            case "ExplosiveEnchantment":
+            case "Enchantment":
                 ExplosiveEnchantment(user, target);
                 break;
             case "ClearDay":
@@ -63,7 +63,7 @@ public class Spell {
             case "Frostbolt":
                 this.cost = 10;
                 break;
-            case "Dragonbreath":
+            case "Tsunami":
                 this.cost = 25;
                 break;
             case "Earthquake":
@@ -72,7 +72,7 @@ public class Spell {
             case "GrassCannon":
                 this.cost = 70;
                 break;
-            case "ExplosiveEnchantment":
+            case "Enchantment":
                 this.cost = 30;
                 break;
             case "ClearDay":
@@ -106,18 +106,17 @@ public class Spell {
     }
 
     public void Fireball(LifeForm user, LifeForm target) {
-        int damage = 10;
+        int damage = 35;
         int accuracy = 80;
         int modifier = 1;
-
-
 
         if(target.type == "ice") {
             modifier = 2;
         }
         if(this.willHit(target.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
             BattleActivity.battleText.offer(user.name + "'s fireball hit dealing " + Integer.toString(calcDamage) + " damage!");
@@ -130,18 +129,17 @@ public class Spell {
     }
 
     public void Lightning(LifeForm user, LifeForm target) {
-        int damage = 15;
-        int accuracy = 60;
+        int damage = 65;
+        int accuracy = 45;
         int modifier = 1;
-
-
 
         if(target.type == "water") {
             modifier = 2;
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
             BattleActivity.battleText.offer(user.name + "'s lighting hit dealing " + Integer.toString(calcDamage) + " damage!");
@@ -154,18 +152,17 @@ public class Spell {
     }
 
     public void Frostbolt(LifeForm user, LifeForm target) {
-        int damage = 6;
+        int damage = 20;
         int accuracy = 90;
         int modifier = 1;
 
-
-
-        if(target.type == "fire") {
+        if(target.type == "grass") {
             modifier = 2;
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
             BattleActivity.battleText.offer(user.name + "'s frostball hit dealing " + Integer.toString(calcDamage) + " damage!");
@@ -176,21 +173,21 @@ public class Spell {
         }
 
     }
-    public void Dragonbreath(LifeForm user, LifeForm target) {
-        int damage = 10;
-        int accuracy = 80;
+    public void Tsunami(LifeForm user, LifeForm target) {
+        int damage = 40;
+        int accuracy = 75;
         int modifier = 1;
 
-
-        if(target.type == "ice") {
+        if(target.type == "fire") {
             modifier = 2;
         }
         if(this.willHit(target.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer(user.name + "'s dragonbreath hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + "'s Tsunami hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
@@ -200,25 +197,24 @@ public class Spell {
     }
 
     public void Earthquake(LifeForm user, LifeForm target) {
-        int damage = 15;
+        int damage = 55;
         int accuracy = 60;
         int modifier = 1;
 
-
-
-        if(target.type == "water") {
+        if(target.type == "electric") {
             modifier = 2;
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
             BattleActivity.battleText.offer(user.name + "shook the ground hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer(user.name + "'s barage of lighting fails to connect.");
+            BattleActivity.battleText.offer(user.name + "'s earthquake only made him dizzy.");
         }
 
     }
@@ -228,21 +224,20 @@ public class Spell {
         int accuracy = 90;
         int modifier = 1;
 
-
-
-        if(target.type == "fire") {
+        if(target.type == "ground") {
             modifier = 2;
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod) - target.def);
+            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
             BattleActivity.battleText.offer("The " + user.name + "shot a grass cannon dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
-            BattleActivity.battleText.offer("The " + user.name + " only manage to give " + target.name + " a runny nose.");
+            BattleActivity.battleText.offer("The " + user.name + " looked really cool, but did nothing to " + target.name + ".");
         }
 
     }

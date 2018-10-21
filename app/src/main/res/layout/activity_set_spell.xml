@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onButton4"
-                android:text="Dragonbreath"
+                android:text="Tsunami"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onButton7"
-                android:text="Explosive Enchantment"
+                android:text="Enchantment"
                 android:textAlignment="center" />
 
             <Button

@@ -11,34 +11,33 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="You found an Item!"
         android:textAlignment="center"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="74dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="INSERT item description and how to use @string/common_google_play_services_install_text"
         android:textAlignment="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="158dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.668" />
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to searching"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="268dp" />
-
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to main menu"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="331dp" />
 </android.support.constraint.ConstraintLayout>

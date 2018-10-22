@@ -37,6 +37,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -190,11 +191,13 @@ public class MapsActivity extends ClosableActivity
                     previousLocation = location;
                 }
 
-                if(Math.abs(location.getLatitude() - previousLocation.getLatitude()) > 0.5 || Math.abs(location.getLongitude() - previousLocation.getLongitude()) > .5) {
+                //IF the change is great enough, make a new marker
+                if(Math.abs(location.getLatitude() - previousLocation.getLatitude()) > 0.00005 || Math.abs(location.getLongitude() - previousLocation.getLongitude()) > .00005) {
                     mp = new MarkerOptions();
                     previousLocation = location;
                     mp.position(new LatLng(previousLocation.getLatitude(), previousLocation.getLongitude()));
                     mp.title(""+ j++);
+
                     markers.add(mp);
                    // mMap.addMarker(mp);
                 }
@@ -234,12 +237,14 @@ public class MapsActivity extends ClosableActivity
         if(markers.size() > 0) {
             System.out.println(marker.getTitle());
             for (int i = 0; i < markers.size(); i++) {
-                System.out.println("FOHSDFIOH");
+                System.out.println("----------------");
                 System.out.println(markers.get(i).getTitle());
                 //If the marker clicked is the same as the one in the marker array at a certain location
-                if(markers.get(i).getTitle().compareTo(marker.getTitle()) == 1) {
+                if(markers.get(i).getTitle().compareTo(marker.getTitle()) == 0) {
                     markers.remove(i);
                     System.out.println("removed "+ i);
+                    Intent k = new Intent(getBaseContext(), ItemActivity.class);
+                    startActivity(k);
                 }
 
             }

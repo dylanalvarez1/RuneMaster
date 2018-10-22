@@ -43,6 +43,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
@@ -53,6 +54,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This demo shows how GMS Location can be used to check for changes to the users location.  The
@@ -88,12 +91,16 @@ public class MapsActivity extends ClosableActivity
     LocationManager locationManager;
     private final int REQUEST_PERMISSION_ACCESS_FINE_LOCATION=1;
     public Location previousLocation = null;
+    public Location currentLocation = null;
     private LocationRequest mLocationRequest;
     private LocationCallback locationCallback;
     public ArrayList<MarkerOptions> markers = new ArrayList<>();
     int j = 0;
 
     GoogleApiClient mGoogleApiClient;
+
+    Handler handler = null;
+    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,21 +185,34 @@ public class MapsActivity extends ClosableActivity
         mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
-                MarkerOptions mp;
+               MarkerOptions mp;
+
                 if(previousLocation == null) {
                     previousLocation = location;
+
                 }
+                currentLocation = location;
+
 
                 //IF the change is great enough, make a new marker
-                if(Math.abs(location.getLatitude() - previousLocation.getLatitude()) > 0.00005 || Math.abs(location.getLongitude() - previousLocation.getLongitude()) > .00005) {
+               // if(Math.abs(location.getLatitude() - previousLocation.getLatitude()) > 0.00005 || Math.abs(location.getLongitude() - previousLocation.getLongitude()) > .00005) {
                     mp = new MarkerOptions();
                     previousLocation = location;
-                    mp.position(new LatLng(previousLocation.getLatitude(), previousLocation.getLongitude()));
+
+                    double random1 = Math.random();
+                    double random2 = Math.random();
+                    double dist1 = Math.random();
+                    double dist2 = Math.random();
+                    if(random1 > .5) dist1 *= -1;
+                    if(random2 > .5) dist2 *= -1;
+
+                    //Add a new marker with the dist1 and dist2 offset from the user's current location
+                    mp.position(new LatLng(location.getLatitude() + (dist1/1000.0), location.getLongitude() + (dist2/1000.0)));
                     mp.title(""+ j++);
 
                     markers.add(mp);
                    // mMap.addMarker(mp);
-                }
+                //}
 
                 CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude()));
                 //CameraUpdate zoom = CameraUpdateFactory.zoomTo(11);
@@ -231,13 +251,28 @@ public class MapsActivity extends ClosableActivity
             for (int i = 0; i < markers.size(); i++) {
                 System.out.println("----------------");
                 System.out.println(markers.get(i).getTitle());
+
+
+                System.out.println("Current lat: " + currentLocation.getLatitude() + " Current long: " + currentLocation.getLongitude());
+                System.out.println("Marker lat: " + markers.get(i).getPosition().latitude + " Marker long: " + markers.get(i).getPosition().longitude);
+
                 //If the marker clicked is the same as the one in the marker array at a certain location
                 if(markers.get(i).getTitle().compareTo(marker.getTitle()) == 0) {
-                    markers.remove(i);
-                    System.out.println("removed "+ i);
-                    Intent k = new Intent(getBaseContext(), ItemActivity.class);
-                    startActivity(k);
+
+                    //If the marker is within a certain distance away from the current location, can you pick it up
+                    if(Math.abs(markers.get(i).getPosition().latitude - currentLocation.getLatitude()) < 0.0001 || Math.abs(markers.get(i).getPosition().longitude - currentLocation.getLongitude()) < 0.0001) {
+                        markers.remove(i);
+                        System.out.println("removed "+ i);
+                        Intent k = new Intent(getBaseContext(), ItemActivity.class);
+                        startActivity(k);
+                    }
+                    else {
+                        Toast.makeText(this, "This item is too far away to pick up", Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
+
 
             }
             showMarkers();

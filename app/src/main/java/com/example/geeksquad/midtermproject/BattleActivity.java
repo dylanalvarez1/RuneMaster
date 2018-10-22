@@ -31,6 +31,7 @@ public class BattleActivity  extends ClosableActivity {
     TextView enemyStatus;
     TextView enemyLevel;
     ImageView enemyIcon;
+    TextView enemyType;
     Button pButton;
     Button cButton;
     Button iButton;
@@ -142,6 +143,7 @@ public class BattleActivity  extends ClosableActivity {
         enemyName.setText(enemy.name);
         enemyLevel.setText("Level: " + Integer.toString(enemy.level));
         playerLevel.setText("Level: " + Integer.toString(MainActivity.player.level));
+        enemyType.setText("Type: " + enemy.type);
         enemyIcon.setImageResource(enemy.imageSource);
     }
 
@@ -284,6 +286,7 @@ public class BattleActivity  extends ClosableActivity {
         enemyLevel = findViewById(R.id.enemyLevel);
         enemyStatus = findViewById(R.id.enemyStatus);
         enemyName = findViewById(R.id.enemyName);
+        enemyType = findViewById(R.id.enemyType);
         enemyIcon = findViewById(R.id.enemyIcon);
         battleDescription = findViewById(R.id.battleDescription);
         pButton = findViewById(R.id.pButton);

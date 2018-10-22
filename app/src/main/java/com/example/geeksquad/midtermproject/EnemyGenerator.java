@@ -121,6 +121,7 @@ public class EnemyGenerator {
                 break;
         }
         def = level;
+        System.out.println("Type: " + type);
         return new LifeForm(adj1 + adj2 + noun, health, mana, level, def, status, type, imageSource);
     }
 

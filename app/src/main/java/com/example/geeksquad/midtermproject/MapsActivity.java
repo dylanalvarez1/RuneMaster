@@ -163,14 +163,6 @@ public class MapsActivity extends ClosableActivity
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mFusedLocationClient != null) {
-            mFusedLocationClient.removeLocationUpdates(locationCallback);
-        }
-    }
-
 
 
 

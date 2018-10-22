@@ -310,9 +310,11 @@ public class BattleActivity  extends ClosableActivity {
         cButton.setEnabled(true);
         iButton.setEnabled(true);
         rButton.setEnabled(true);
+        /*
         itemButton1.setEnabled(true);
         itemButton2.setEnabled(true);
         itemButton3.setEnabled(true);
+        */
     }
     void disableInputs() {
         pButton.setEnabled(false);

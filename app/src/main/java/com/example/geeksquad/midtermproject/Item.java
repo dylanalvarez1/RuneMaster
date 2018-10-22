@@ -24,18 +24,18 @@ public class Item {
 
     public void heal(Player user) {
         user.health = user.maxHealth;
-        BattleActivity.battleText.offer(user.name + "drank a healing potion and regained his health!");
+        BattleActivity.battleText.offer(user.name + " drank a healing potion and regained his health!");
     }
 
     public void restore(Player user) {
         user.mana = user.maxMana;
-        BattleActivity.battleText.offer(user.name + "drank a mana potion and regained his mana!");
+        BattleActivity.battleText.offer(user.name + " drank a mana potion and regained his mana!");
     }
 
     public void cast(LifeForm user, LifeForm target) {
        int choice = getRandomNumberInRange(0,11);
        Spell spell = chooseSpell(choice);
-        BattleActivity.battleText.offer(user.name + "used a mysterious rune to cast a random spell!");
+        BattleActivity.battleText.offer(user.name + " used a mysterious rune to cast a random spell!");
        spell.use(user, target, spell.name);
     }
 

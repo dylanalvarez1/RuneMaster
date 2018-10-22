@@ -37,6 +37,9 @@ public class MainActivity extends ClosableActivity {
         player.addItem(healthPot);
         player.addItem(manaPot);
         player.addItem(rune);
+        player.addItem(healthPot);
+        player.addItem(manaPot);
+        player.addItem(rune);
 
     }
     public void onSearchClicked(View view) {

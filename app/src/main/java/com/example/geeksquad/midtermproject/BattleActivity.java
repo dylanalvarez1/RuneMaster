@@ -15,6 +15,7 @@ public class BattleActivity  extends ClosableActivity {
     boolean battleWon;
     boolean battleLost;
     boolean selectSpell;
+    boolean selectItem;
     boolean enemyTurn;
     boolean run;
     boolean runDelay;
@@ -37,6 +38,9 @@ public class BattleActivity  extends ClosableActivity {
     Button spellButton1;
     Button spellButton2;
     Button spellButton3;
+    Button itemButton1;
+    Button itemButton2;
+    Button itemButton3;
 
     public static Queue<String> battleText = new LinkedList<String>();
 
@@ -127,6 +131,7 @@ public class BattleActivity  extends ClosableActivity {
         runDelay = false;
         battleWon = false;
         selectSpell = false;
+        selectItem = false;
         enemyTurn = false;
         enemy = EnemyGenerator.newEnemy();
         setStaticFields();
@@ -146,6 +151,28 @@ public class BattleActivity  extends ClosableActivity {
         playerHealth.setText("Health: " + Integer.toString(MainActivity.player.health));
         playerMana.setText("Mana: " + Integer.toString(MainActivity.player.mana));
         playerStatus.setText("Status: " + MainActivity.player.status);
+        itemButton1.setText("Health Potions: " + MainActivity.player.healthPotions.size());
+        itemButton2.setText("Mana Potions: " + MainActivity.player.manaPotions.size());
+        itemButton3.setText("Mysterious Runes: " + MainActivity.player.mysteriousRunes.size());
+
+        if(MainActivity.player.healthPotions.size() <= 0) {
+            itemButton1.setEnabled(false);
+        }
+        else {
+            itemButton1.setEnabled(true);
+        }
+        if(MainActivity.player.manaPotions.size() <= 0) {
+            itemButton2.setEnabled(false);
+        }
+        else {
+            itemButton2.setEnabled(true);
+        }
+        if(MainActivity.player.mysteriousRunes.size() <= 0) {
+            itemButton3.setEnabled(false);
+        }
+        else {
+            itemButton3.setEnabled(true);
+        }
 
         if(MainActivity.player.mana - MainActivity.player.getSpell(0).cost < 0) {
             spellButton1.setEnabled(false);
@@ -178,15 +205,34 @@ public class BattleActivity  extends ClosableActivity {
     }
     public void onSpellAttack(View view) {
         hideMenu();
+        updateStats();
         selectSpell = true;
 
     }
     public void onItem(View view) {
-
+        hideMenuItemVersion();
+        updateStats();
+        selectItem = true;
     }
+
     public void onRunAway(View view) {
         battleText.offer("You run away as fast as you can dropping gold in the process.");
         run = true;
+    }
+
+    public void onItem1(View view) {
+        MainActivity.player.useItem("Health Potion", MainActivity.player, enemy);
+        updateStats();
+    }
+
+    public void onItem2(View view) {
+        MainActivity.player.useItem("Mana Potion", MainActivity.player, enemy);
+        updateStats();
+    }
+
+    public void onItem3(View view) {
+        MainActivity.player.useItem("Mysterious Rune", MainActivity.player, enemy);
+        updateStats();
     }
 
     public void onSpellCast1(View view) {
@@ -247,9 +293,16 @@ public class BattleActivity  extends ClosableActivity {
         spellButton1 = findViewById(R.id.spellButton1);
         spellButton2 = findViewById(R.id.spellButton2);
         spellButton3 = findViewById(R.id.spellButton3);
+        itemButton1 = findViewById(R.id.itemButton1);
+        itemButton2 = findViewById(R.id.itemButton2);
+        itemButton3 = findViewById(R.id.itemButton3);
+
         spellButton1.setText(MainActivity.player.getSpell(0).name);
         spellButton2.setText(MainActivity.player.getSpell(1).name);
         spellButton3.setText(MainActivity.player.getSpell(2).name);
+        itemButton1.setText("Health Potions: " + MainActivity.player.healthPotions.size());
+        itemButton2.setText("Mana Potions: " + MainActivity.player.manaPotions.size());
+        itemButton3.setText("Mysterious Runes: " + MainActivity.player.mysteriousRunes.size());
     }
 
     void enableInputs() {
@@ -257,12 +310,18 @@ public class BattleActivity  extends ClosableActivity {
         cButton.setEnabled(true);
         iButton.setEnabled(true);
         rButton.setEnabled(true);
+        itemButton1.setEnabled(true);
+        itemButton2.setEnabled(true);
+        itemButton3.setEnabled(true);
     }
     void disableInputs() {
         pButton.setEnabled(false);
         cButton.setEnabled(false);
         iButton.setEnabled(false);
         rButton.setEnabled(false);
+        itemButton1.setEnabled(false);
+        itemButton2.setEnabled(false);
+        itemButton3.setEnabled(false);
     }
     void hideMenu() {
         pButton.setVisibility(View.INVISIBLE);
@@ -274,6 +333,17 @@ public class BattleActivity  extends ClosableActivity {
         spellButton2.setVisibility(View.VISIBLE);
         spellButton3.setVisibility(View.VISIBLE);
     }
+
+    void hideMenuItemVersion() {
+        pButton.setVisibility(View.INVISIBLE);
+        cButton.setVisibility(View.INVISIBLE);
+        rButton.setVisibility(View.INVISIBLE);
+        iButton.setVisibility(View.INVISIBLE);
+
+        itemButton1.setVisibility(View.VISIBLE);
+        itemButton2.setVisibility(View.VISIBLE);
+        itemButton3.setVisibility(View.VISIBLE);
+    }
     void revertMenu() {
         pButton.setVisibility(View.VISIBLE);
         cButton.setVisibility(View.VISIBLE);
@@ -283,6 +353,10 @@ public class BattleActivity  extends ClosableActivity {
         spellButton1.setVisibility(View.INVISIBLE);
         spellButton2.setVisibility(View.INVISIBLE);
         spellButton3.setVisibility(View.INVISIBLE);
+
+        itemButton1.setVisibility(View.INVISIBLE);
+        itemButton2.setVisibility(View.INVISIBLE);
+        itemButton3.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -295,6 +369,9 @@ public class BattleActivity  extends ClosableActivity {
         }
         */
         if(selectSpell) {
+            revertMenu();
+        }
+        if(selectItem) {
             revertMenu();
         }
     }

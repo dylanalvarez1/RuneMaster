@@ -11,6 +11,9 @@ public class MainActivity extends ClosableActivity {
    Spell fireball;
    Spell frostbolt;
    Spell lightning;
+   Item healthPot;
+   Item manaPot;
+   Item rune;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,15 @@ public class MainActivity extends ClosableActivity {
         player.setSpell(fireball, 0);
         player.setSpell(frostbolt, 1);
         player.setSpell(lightning, 2);
+
+        healthPot = new Item("Health Potion");
+        manaPot = new Item("Mana Potion");
+        rune = new Item("Mysterious Rune");
+
+        player.addItem(healthPot);
+        player.addItem(manaPot);
+        player.addItem(rune);
+
     }
     public void onSearchClicked(View view) {
         Intent i = new Intent(getBaseContext(), MapsActivity.class);

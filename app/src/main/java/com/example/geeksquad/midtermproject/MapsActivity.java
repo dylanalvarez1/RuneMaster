@@ -32,6 +32,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.Manifest;
@@ -50,6 +51,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * This demo shows how GMS Location can be used to check for changes to the users location.  The
  * "My Location" button uses GMS Location to set the blue dot representing the users location.
@@ -61,6 +64,7 @@ public class MapsActivity extends ClosableActivity
         OnMyLocationButtonClickListener,
         OnMyLocationClickListener,
         OnMapReadyCallback,
+        GoogleMap.OnMarkerClickListener,
 
         ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -85,6 +89,8 @@ public class MapsActivity extends ClosableActivity
     public Location previousLocation = null;
     private LocationRequest mLocationRequest;
     private LocationCallback locationCallback;
+    public ArrayList<MarkerOptions> markers = new ArrayList<>();
+    int j = 0;
 
     GoogleApiClient mGoogleApiClient;
 
@@ -188,8 +194,9 @@ public class MapsActivity extends ClosableActivity
                     mp = new MarkerOptions();
                     previousLocation = location;
                     mp.position(new LatLng(previousLocation.getLatitude(), previousLocation.getLongitude()));
-                    mp.title("my position");
-                    mMap.addMarker(mp);
+                    mp.title(""+ j++);
+                    markers.add(mp);
+                   // mMap.addMarker(mp);
                 }
 
                 CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude()));
@@ -197,7 +204,7 @@ public class MapsActivity extends ClosableActivity
                 //mMap.clear();
 
 
-
+                showMarkers();
 
                 mMap.moveCamera(center);
                 //mMap.animateCamera(zoom);
@@ -205,6 +212,40 @@ public class MapsActivity extends ClosableActivity
 
             }
         });
+    }
+
+
+    public void showMarkers() {
+        mMap.clear();
+        if(markers.size() > 0)
+        {
+            for (int i = 0; i < markers.size(); i++) {
+                mMap.addMarker(markers.get(i));
+                mMap.setOnMarkerClickListener(this);
+
+            }
+        }
+
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        System.out.println("Clicked marker");
+        if(markers.size() > 0) {
+            System.out.println(marker.getTitle());
+            for (int i = 0; i < markers.size(); i++) {
+                System.out.println("FOHSDFIOH");
+                System.out.println(markers.get(i).getTitle());
+                //If the marker clicked is the same as the one in the marker array at a certain location
+                if(markers.get(i).getTitle().compareTo(marker.getTitle()) == 1) {
+                    markers.remove(i);
+                    System.out.println("removed "+ i);
+                }
+
+            }
+            showMarkers();
+        }
+        return true;
     }
 
         /*

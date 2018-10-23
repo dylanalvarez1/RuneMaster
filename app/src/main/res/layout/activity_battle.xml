@@ -5,6 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stonewall"
     tools:context=".BattleActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Enemy Name"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="Health: 80"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/enemyName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Type: Fire"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/enemyHealth"
         app:layout_constraintTop_toTopOf="@+id/enemyHealth" />
 
@@ -55,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Level 60"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/enemyHealth"
         app:layout_constraintTop_toBottomOf="@+id/enemyHealth" />
 
@@ -65,6 +70,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:text="Health: 35"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/turnText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -76,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Mana: 90"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/playerHealth"
         app:layout_constraintTop_toTopOf="@+id/playerHealth" />
 
@@ -85,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="Level: "
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/playerStatus"
         app:layout_constraintTop_toTopOf="@+id/playerMana" />
 
@@ -97,6 +105,7 @@
         android:layout_marginTop="8dp"
         android:onClick="onBasicAttack"
         android:text="Attack"
+        android:background="@android:color/holo_red_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cButton"
         app:layout_constraintHorizontal_bias="1.0"
@@ -110,6 +119,7 @@
         android:layout_marginBottom="108dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:background="@android:color/holo_blue_bright"
         android:onClick="onSpellAttack"
         android:text="Cast Spell"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,6 +133,7 @@
         android:layout_width="118dp"
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
+        android:background="#fde172"
         android:onClick="onRunAway"
         android:text="Run Away"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,6 +146,7 @@
         android:layout_width="118dp"
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
+        android:background="@android:color/holo_green_light"
         android:onClick="onItem"
         android:text="Item"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,6 +163,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -168,6 +181,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Event Log:"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -182,6 +196,7 @@
         android:layout_marginBottom="168dp"
         android:text="Your move!"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -237,6 +252,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Status: Fine"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/enemyType"
         app:layout_constraintTop_toTopOf="@+id/enemyLevel" />
 
@@ -245,6 +261,9 @@
         android:layout_width="187dp"
         android:layout_height="10dp"
         android:layout_marginTop="168dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/enemyLevel"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/line" />
@@ -255,6 +274,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="Status: Fine"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/playerLevel" />
 

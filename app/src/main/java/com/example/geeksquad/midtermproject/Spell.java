@@ -119,7 +119,7 @@ public class Spell {
         }
         if(this.willHit(target.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            int calcDamage = (int) ((damage + 2 * modifier * this.levelMod * user.spellMod) - target.def/4);
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
@@ -146,7 +146,7 @@ public class Spell {
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            int calcDamage = (int) ((damage + 2 * modifier * this.levelMod * user.spellMod) - target.def/4);
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
@@ -173,7 +173,7 @@ public class Spell {
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            int calcDamage = (int) ((damage + 2 * modifier * this.levelMod * user.spellMod) - target.def/4);
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
@@ -195,7 +195,7 @@ public class Spell {
         }
         if(this.willHit(target.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            int calcDamage = (int) ((damage + 2 * modifier * this.levelMod * user.spellMod) - target.def/4);
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
@@ -218,7 +218,7 @@ public class Spell {
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            int calcDamage = (int) ((damage + 2 * modifier * this.levelMod * user.spellMod) - target.def/4);
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
@@ -232,7 +232,7 @@ public class Spell {
     }
 
     public void GrassCannon(LifeForm user, LifeForm target) {
-        int damage = 6;
+        int damage = 15;
         int accuracy = 90;
         int modifier = 1;
 
@@ -241,7 +241,7 @@ public class Spell {
         }
         if(this.willHit(user.status, accuracy)) {
             //TODO: Make sure that the def is never larger than the damage
-            int calcDamage = (int) ((damage * modifier * this.levelMod * user.spellMod) - target.def);
+            int calcDamage = (int) ((damage + 2 * modifier * this.levelMod * user.spellMod) - target.def/4);
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;

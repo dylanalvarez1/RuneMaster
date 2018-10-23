@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="74" />
+                                                <entry key="scalingPercent" value="54" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -35,7 +35,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="252525" />
-                                      <entry key="foregroundImage" value="C:\Users\Geek Squad\Documents\AndroidStudioProjects\AndroidProjects\MidtermProject\app\src\main\res\drawable-v24\runeicon.png" />
+                                      <entry key="foregroundImage" value="C:\Users\Geek Squad\Documents\AndroidStudioProjects\AndroidProjects\MidtermProject\app\src\main\res\drawable-v24\spell.png" />
                                     </map>
                                   </option>
                                 </PersistentState>

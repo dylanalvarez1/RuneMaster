@@ -60,7 +60,7 @@ public class LifeForm {
     }
 
     public void basicAttack(LifeForm target) {
-        target.health -= 10;
+        target.health -= (5 + 7*physicalMod);
         if(target.health < 0) target.health = 0;
         BattleActivity.battleText.offer("The " + this.name + " walked up and hit the " + target.name+ "!");
         /*

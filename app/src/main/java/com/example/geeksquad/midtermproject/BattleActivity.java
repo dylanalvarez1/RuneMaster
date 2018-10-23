@@ -77,6 +77,7 @@ public class BattleActivity  extends ClosableActivity {
                         enemyTurn = false;
                         if(MainActivity.player.health <= 0) {
                             battleText.offer(MainActivity.player.name + " was defeated! They lost all their gold.");
+                            battleText.offer("");
                         }
                     }
                     if(applyStatus) {

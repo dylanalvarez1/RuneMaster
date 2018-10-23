@@ -127,7 +127,7 @@ public class Spell {
         }
         else {
             //You missed
-            BattleActivity.battleText.offer(user.name + "unleashes multiple fireballs at " + target.name + " but they all fail to hit. ");
+            BattleActivity.battleText.offer(user.name + " unleashes multiple fireballs at " + target.name + " but they all fail to hit. ");
         }
 
     }
@@ -222,7 +222,7 @@ public class Spell {
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer(user.name + "shook the ground hit dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer(user.name + " shook the ground hit dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed
@@ -245,7 +245,7 @@ public class Spell {
             if(calcDamage < 0) calcDamage = 0;
             target.health -= calcDamage;
             if(target.health < 0) target.health = 0;
-            BattleActivity.battleText.offer("The " + user.name + "shot a grass cannon dealing " + Integer.toString(calcDamage) + " damage!");
+            BattleActivity.battleText.offer("The " + user.name + " shot a grass cannon dealing " + Integer.toString(calcDamage) + " damage!");
         }
         else {
             //You missed

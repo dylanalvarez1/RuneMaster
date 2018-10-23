@@ -94,4 +94,19 @@
         android:text="Exp: 50"
         app:layout_constraintStart_toStartOf="@+id/playerLevel"
         app:layout_constraintTop_toTopOf="@+id/playerMana" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="289dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Created by Dylan Alvarez"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recoverButton" />
 </android.support.constraint.ConstraintLayout>

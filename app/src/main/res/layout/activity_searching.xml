@@ -5,84 +5,140 @@
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stonewall"
     tools:context=".MainActivity">
+
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="serif"
         android:text="Spell Master"
+        android:textColor="@android:color/white"
         android:textSize="36sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="286dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_width="381dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00000000"
+        android:color="#FFFFFFFF"
         android:onClick="onSearchClicked"
-        android:padding="20px"
-        android:text="Search"
+        android:paddingLeft="200px"
+        android:text="Search for items"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        tools:color="@android:color/white"
+        tools:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="286dp"
-        android:layout_height="wrap_content"
+        android:layout_width="381dp"
+        android:layout_height="101dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="8dp"
+        android:background="#00000000"
+        android:color="#00000000"
         android:onClick="onBattleClicked"
-        android:text="Battle"
+        android:paddingLeft="200px"
+        android:text="Fight a monster"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:text="Fight a monster" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="288dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="381dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#00000000"
+        android:color="#00000000"
         android:onClick="onAboutClicked"
-        android:text="About"
-        app:layout_constraintRight_toRightOf="parent"
+        android:paddingLeft="200px"
+        android:text="Check your stats"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        tools:text="Check your stats"
+        tools:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="311dp"
-        android:layout_height="48dp"
+        android:layout_width="307dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:text="Find items, cast spells, see how many monsters you can slay!"
+        android:layout_marginTop="8dp"
+        android:text="Find items, cast spells, see how many monsters you can beat!"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/map" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Created by Dylan Alvarez"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sword" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/armor" />
 
 </android.support.constraint.ConstraintLayout>

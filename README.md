@@ -1,5 +1,5 @@
 # Spell Master
-Android studio app where you can find items, cast spells, and fight monsters!
+- Find items, cast spells, and fight monsters!
 - Developed using Android Studio, Google Maps API
 
 

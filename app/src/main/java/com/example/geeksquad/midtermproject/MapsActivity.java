@@ -16,7 +16,6 @@
 
 package com.example.geeksquad.midtermproject;
 
-import com.example.geeksquad.midtermproject.R;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -30,6 +29,7 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -40,22 +40,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * This demo shows how GMS Location can be used to check for changes to the users location.  The
@@ -196,7 +191,7 @@ public class MapsActivity extends ClosableActivity
 
                 //IF the change is great enough, make a new marker
                // if(Math.abs(location.getLatitude() - previousLocation.getLatitude()) > 0.00005 || Math.abs(location.getLongitude() - previousLocation.getLongitude()) > .00005) {
-                    mp = new MarkerOptions();
+                    mp = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.chest));
                     previousLocation = location;
 
                     double random1 = Math.random();

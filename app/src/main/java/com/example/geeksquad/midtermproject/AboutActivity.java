@@ -35,6 +35,7 @@ public class AboutActivity  extends ClosableActivity {
             MainActivity.player.gold -= 250;
             MainActivity.player.health = MainActivity.player.maxHealth;
             MainActivity.player.mana = MainActivity.player.maxMana;
+            MainActivity.player.status = "None";
             updateStats();
         }
     }

@@ -23,7 +23,7 @@ public class MainActivity extends ClosableActivity {
 
         player = new Player("Player",100, 150, 1,100, 50, 250, "None", "Human", 0);
         fireball = new Spell("Fireball", "fire", 1, "burned");
-        frostbolt = new Spell("Frostbolt", "ice", 1, "freezed");
+        frostbolt = new Spell("Frostbolt", "ice", 1, "frozen");
         lightning = new Spell("Lightning", "electric", 1, "shocked");
 
         player.setSpell(fireball, 0);

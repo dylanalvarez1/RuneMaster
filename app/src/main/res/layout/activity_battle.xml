@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/enemyName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="139dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Enemy Name"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,8 +23,11 @@
         android:id="@+id/enemyIcon"
         android:layout_width="138dp"
         android:layout_height="138dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/enemyType"
         app:layout_constraintTop_toTopOf="@+id/enemyName"
         app:srcCompat="@drawable/dragonhead" />
 
@@ -60,82 +63,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:text="Health: 35"
         app:layout_constraintBottom_toTopOf="@+id/turnText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
+        app:layout_constraintVertical_bias="0.979" />
 
     <TextView
         android:id="@+id/playerMana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
         android:text="Mana: 90"
-        app:layout_constraintBottom_toTopOf="@+id/turnText"
         app:layout_constraintStart_toEndOf="@+id/playerHealth"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintTop_toTopOf="@+id/playerHealth" />
 
     <TextView
         android:id="@+id/playerLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="Level: "
-        app:layout_constraintBottom_toTopOf="@+id/turnText"
-        app:layout_constraintStart_toEndOf="@+id/playerMana"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintEnd_toStartOf="@+id/playerStatus"
+        app:layout_constraintTop_toTopOf="@+id/playerMana" />
 
     <Button
         android:id="@+id/pButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="48dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="onBasicAttack"
-        android:text="Physical Attack"
+        android:text="Attack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cButton" />
 
     <Button
         android:id="@+id/cButton"
-        android:layout_width="146dp"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="108dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:onClick="onSpellAttack"
-        android:text="Cast a Spell"
+        android:text="Cast Spell"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/turnText"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/turnText" />
 
     <Button
         android:id="@+id/rButton"
-        android:layout_width="141dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onRunAway"
         android:text="Run Away"
-        app:layout_constraintStart_toEndOf="@+id/pButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/turnText"
         app:layout_constraintTop_toTopOf="@+id/pButton" />
 
     <Button
         android:id="@+id/iButton"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onItem"
         android:text="Item"
-        app:layout_constraintStart_toEndOf="@+id/cButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/turnText"
         app:layout_constraintTop_toTopOf="@+id/cButton" />
 
     <TextView
@@ -173,8 +177,8 @@
 
     <TextView
         android:id="@+id/turnText"
-        android:layout_width="109dp"
-        android:layout_height="wrap_content"
+        android:layout_width="77dp"
+        android:layout_height="20dp"
         android:layout_marginBottom="168dp"
         android:text="Your move!"
         android:textAlignment="center"
@@ -188,37 +192,45 @@
         android:id="@+id/spellButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onSpellCast1"
         android:text="Button"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/turnText" />
 
     <Button
         android:id="@+id/spellButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onSpellCast2"
         android:text="Button"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/spellButton1"
-        app:layout_constraintTop_toTopOf="@+id/spellButton1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spellButton1" />
 
     <Button
         android:id="@+id/spellButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onSpellCast3"
         android:text="Button"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spellButton2"
-        app:layout_constraintTop_toTopOf="@+id/spellButton1" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spellButton2" />
 
     <TextView
         android:id="@+id/enemyStatus"
@@ -232,9 +244,8 @@
         android:id="@+id/imageView4"
         android:layout_width="187dp"
         android:layout_height="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="160dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="168dp"
+        app:layout_constraintStart_toStartOf="@+id/enemyLevel"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/line" />
 
@@ -242,16 +253,10 @@
         android:id="@+id/playerStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="Status: Fine"
-        app:layout_constraintBottom_toTopOf="@+id/turnText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/playerLevel"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintTop_toTopOf="@+id/playerLevel" />
 
     <Button
         android:id="@+id/itemButton1"
@@ -259,7 +264,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:onClick="onItem1"
         android:text="Button"
         android:visibility="invisible"
@@ -273,21 +278,21 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="onItem2"
         android:text="Button"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemButton1" />
+        app:layout_constraintTop_toTopOf="@+id/spellButton2" />
 
     <Button
         android:id="@+id/itemButton3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="onItem3"
         android:text="Button"
         android:visibility="invisible"

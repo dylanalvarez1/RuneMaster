@@ -1,88 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity">
+    tools:context=".AboutActivity"
+    android:id="@+id/relativeLayout3">
 
     <TextView
         android:id="@+id/playerHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/playerLevel"
-        android:layout_toStartOf="@+id/button8"
-        android:text="Health: 40 / 200" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Health: 40 / 200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/playerMana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/playerHealth"
-        android:layout_below="@+id/playerHealth"
-        android:text="Mana: 60 / 100" />
+        android:layout_marginTop="12dp"
+        android:text="Mana: 60 / 100"
+        app:layout_constraintStart_toStartOf="@+id/playerHealth"
+        app:layout_constraintTop_toBottomOf="@+id/playerHealth" />
 
     <TextView
         android:id="@+id/playerLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView16"
-        android:layout_marginEnd="39dp"
-        android:text="Level: 3" />
+        android:layout_marginEnd="52dp"
+        android:text="Level: 3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/playerHealth" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="145dp"
         android:layout_height="123dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="176dp"
         android:onClick="onSetSpells"
-        android:text="Set Spells" />
+        android:text="Set Spells"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
         android:text="Stats"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/playerStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/playerHealth"
-        android:layout_below="@+id/playerMana"
-        android:text="Status: Normal" />
+        android:layout_marginTop="16dp"
+        android:text="Status: Normal"
+        app:layout_constraintStart_toStartOf="@+id/playerHealth"
+        app:layout_constraintTop_toBottomOf="@+id/playerMana" />
 
     <TextView
         android:id="@+id/playerGold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/playerLevel"
-        android:layout_below="@+id/playerMana"
-        android:text="Gold: 50g" />
+        android:text="Gold: 50g"
+        app:layout_constraintStart_toStartOf="@+id/playerLevel"
+        app:layout_constraintTop_toTopOf="@+id/playerStatus" />
 
     <Button
         android:id="@+id/recoverButton"
         android:layout_width="176dp"
         android:layout_height="105dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp"
         android:onClick="onRecoverAtIn"
-        android:text="Recover at the inn (costs 250 gold)" />
+        android:text="Recover at the inn (costs 250 gold)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/playerExp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/playerLevel"
-        android:layout_alignTop="@+id/playerMana"
-        android:text="Exp: 50" />
-</RelativeLayout>
+        android:text="Exp: 50"
+        app:layout_constraintStart_toStartOf="@+id/playerLevel"
+        app:layout_constraintTop_toTopOf="@+id/playerMana" />
+</android.support.constraint.ConstraintLayout>

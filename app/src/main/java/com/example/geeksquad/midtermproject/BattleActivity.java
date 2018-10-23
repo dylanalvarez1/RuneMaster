@@ -14,6 +14,7 @@ import java.util.Queue;
 public class BattleActivity  extends ClosableActivity {
     boolean battleWon;
     boolean battleLost;
+    boolean applyStatus;
     boolean selectSpell;
     boolean selectItem;
     boolean enemyTurn;
@@ -73,17 +74,21 @@ public class BattleActivity  extends ClosableActivity {
                     if(enemyTurn) {
                         if(enemy.health > 0) enemy.randomAttack(MainActivity.player);
                         else enemy.deathEvent();
-                        enemyTurn = !enemyTurn;
+                        enemyTurn = false;
                         if(MainActivity.player.health <= 0) {
                             battleText.offer(MainActivity.player.name + " was defeated! They lost all their gold.");
                         }
+                    }
+                    if(applyStatus) {
+                        applyStatusEffects(MainActivity.player, enemy);
+                        applyStatus = false;
                     }
 
                 }
 
                 else {
                     battleDescription.setText("");
-                    turnText.setText("Your Move!");
+                    turnText.setText("Your move!");
                     enableInputs();
                     if(enemy.health <= 0) {
                         turnText.setText("");
@@ -103,8 +108,10 @@ public class BattleActivity  extends ClosableActivity {
                         MainActivity.player.death(MainActivity.player);
                         finish();
                     }
-                }
 
+
+
+                }
 
                 h.postDelayed(runnable, delay);
             }
@@ -133,7 +140,8 @@ public class BattleActivity  extends ClosableActivity {
         battleWon = false;
         selectSpell = false;
         selectItem = false;
-        enemyTurn = false;
+        enemyTurn = true;
+        applyStatus = false;
         enemy = EnemyGenerator.newEnemy();
         setStaticFields();
         updateStats();
@@ -200,8 +208,9 @@ public class BattleActivity  extends ClosableActivity {
 
     public void onBasicAttack(View view) {
         turnText.setText("");
-        MainActivity.player.basicAttack(enemy);
         enemyTurn = true;
+        applyStatus = true;
+        MainActivity.player.basicAttack(enemy);
         disableInputs();
 
     }
@@ -242,8 +251,9 @@ public class BattleActivity  extends ClosableActivity {
         {
             MainActivity.player.mana -= MainActivity.player.getSpell(0).cost;
             turnText.setText("");
-            MainActivity.player.castSpell(enemy, MainActivity.player.getSpell(0));
             enemyTurn = true;
+            applyStatus = true;
+            MainActivity.player.castSpell(enemy, MainActivity.player.getSpell(0));
             revertMenu();
             disableInputs();
         }
@@ -255,8 +265,9 @@ public class BattleActivity  extends ClosableActivity {
         {
             MainActivity.player.mana -= MainActivity.player.getSpell(1).cost;
             turnText.setText("");
-            MainActivity.player.castSpell(enemy, MainActivity.player.getSpell(1));
             enemyTurn = true;
+            applyStatus = true;
+            MainActivity.player.castSpell(enemy, MainActivity.player.getSpell(1));
             revertMenu();
             disableInputs();
         }
@@ -267,8 +278,9 @@ public class BattleActivity  extends ClosableActivity {
         {
             MainActivity.player.mana -= MainActivity.player.getSpell(2).cost;
             turnText.setText("");
-            MainActivity.player.castSpell(enemy, MainActivity.player.getSpell(2));
             enemyTurn = true;
+            applyStatus = true;
+            MainActivity.player.castSpell(enemy, MainActivity.player.getSpell(2));
             revertMenu();
             disableInputs();
         }
@@ -362,6 +374,33 @@ public class BattleActivity  extends ClosableActivity {
         itemButton1.setVisibility(View.INVISIBLE);
         itemButton2.setVisibility(View.INVISIBLE);
         itemButton3.setVisibility(View.INVISIBLE);
+    }
+
+    public void applyStatusEffects(LifeForm player, LifeForm enemy) {
+        if(player.status == "burned") {
+            player.health -= 10;
+            if(player.health < 0) player.health = 0;
+            battleText.offer(player.name + " took damage from burns!");
+        }
+        if(enemy.status == "burned") {
+            enemy.health -= 10;
+            if(enemy.health < 0) enemy.health = 0;
+            battleText.offer(enemy.name + " took damage from burns!");
+        }
+        if(player.status == "frozen") {
+            player.physicalMod = 1;
+            player.accuracyMod = 1;
+            player.defenseMod = 1;
+            player.spellMod = 1;
+            battleText.offer(player.name + " lost all buffs from being frozen!");
+        }
+        if(enemy.status == "frozen") {
+            enemy.physicalMod = 1;
+            enemy.accuracyMod = 1;
+            enemy.defenseMod = 1;
+            enemy.spellMod = 1;
+            battleText.offer(enemy.name + " lost all buffs from being frozen!");
+        }
     }
 
     @Override

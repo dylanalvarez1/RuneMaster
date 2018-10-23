@@ -68,6 +68,7 @@ public class Player extends LifeForm{
         player.health = player.maxHealth;
         player.mana = player.maxMana;
         player.gold = 0;
+        player.status = "None";
 
     }
 

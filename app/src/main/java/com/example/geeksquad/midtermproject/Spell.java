@@ -110,6 +110,10 @@ public class Spell {
         int accuracy = 80;
         int modifier = 1;
 
+        if(Math.random() > .5) {
+            target.status = "burned";
+        }
+
         if(target.type == "ice") {
             modifier = 2;
         }
@@ -133,6 +137,10 @@ public class Spell {
         int accuracy = 45;
         int modifier = 1;
 
+        if(Math.random() > .8) {
+            target.status = "shocked";
+        }
+
         if(target.type == "water") {
             modifier = 2;
         }
@@ -155,6 +163,10 @@ public class Spell {
         int damage = 20;
         int accuracy = 90;
         int modifier = 1;
+
+        if(Math.random() > .8) {
+            target.status = "frozen";
+        }
 
         if(target.type == "grass") {
             modifier = 2;

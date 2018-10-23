@@ -1,4 +1,4 @@
-# RuneMaster
+# Spell Master
 Android studio app where you can find items, cast spells, and fight monsters!
 
 
